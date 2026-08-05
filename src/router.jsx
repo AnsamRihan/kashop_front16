@@ -5,34 +5,39 @@ import Products from "./pages/products/Products.jsx";
 import Cart from "./pages/cart/Cart.jsx";
 import Register from "./pages/register/Register.jsx";
 import Login from "./pages/login/Login.jsx";
+import AuthLayout from "./layouts/AuthLayout.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <MainLayout />,
     children: [
         {
-            index: true,
+            path: "/",
             element: <Home />,
         },
         {
-            path: "products",
+            path: "/products",
             element: <Products />,
         },
         {
-            path: "cart",
+            path: "/cart",
             element: <Cart />,
-        },
+        }
+        
+    ]
+  },{
+    element: <AuthLayout />,
+    children: [
         {
-            path: "register",
+            path: "/register",
             element: <Register />,
         },
         {
-            path: "login",
+            path: "/login",
             element: <Login />,
         }
     ]
-  },
+  }
 ]);
 
 export default router;

@@ -46,13 +46,23 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+
+    /*-----------------------------------------------*/
+
+    /*Breakpoints*/
+    --breakpoint-xs: 500px;
+    --breakpoint-xxs: 350px;
+    
+    /* Buttons */
+    --color-button-start: #834d9b;
+    --color-button-end: #d04ed6;
 }
 
 :root {
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
+    --card: #FFF8F6;
+    --card-foreground: #221A18;
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
     --primary: oklch(0.205 0 0);
@@ -128,3 +138,33 @@
     @apply font-sans;
     }
 }
+
+@utility test{
+    @apply border border-red-500;
+}
+
+@utility container{
+    @apply mx-auto px-5 h-full max-w-full xs:px-7 sm:px-10 lg:max-w-372;
+}
+
+@utility row{
+    @apply flex flex-row items-center gap-2;
+}
+
+@utility stack{
+    @apply flex flex-col items-center gap-2;
+}
+
+@utility center{
+    @apply flex items-center justify-center;
+}
+
+@utility circle{
+    @apply rounded-full;
+}
+
+@utility btn-gradient {
+  @apply bg-linear-to-r from-button-start via-button-end to-button-start bg-size-[200%_auto]
+    transition-[background-position] duration-500 hover:bg-right hover:text-white;
+}
+
