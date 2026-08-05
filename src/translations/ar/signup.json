@@ -1,0 +1,17 @@
+{
+  "title": "إنشاء حساب",
+  "description": "أدخل معلوماتك أدناه لإنشاء حسابك",
+  "username": "اسم المستخدم",
+  "fullName": "الاسم الكامل",
+  "email": "البريد الإلكتروني",
+  "emailDescription": "سنستخدم هذا للتواصل معك. لن نشارك بريدك الإلكتروني مع أي شخص آخر.",
+  "phoneNumber": "رقم الهاتف",
+  "password": "كلمة المرور",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "confirmPasswordDescription": "يرجى تأكيد كلمة المرور.",
+  "passwordMismatch": "كلمتا المرور غير متطابقتين.",
+  "createAccount": "إنشاء حساب",
+  "creatingAccount": "جارٍ إنشاء الحساب...",
+  "alreadyHaveAccount": "لديك حساب بالفعل؟",
+  "login": "تسجيل الدخول"
+}

@@ -64,7 +64,7 @@ export function LoginForm({className, ...props}) {
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
-                <Input id="email" type="email" placeholder="m@example.com" {...register("email")}/>
+                <Input id="email" type="email" placeholder="m@example.com" {...register("email")} required />
               </Field>
               <Field>
                 <div className="w-full row justify-between">
@@ -75,11 +75,11 @@ export function LoginForm({className, ...props}) {
                     {t("forgotPassword")}
                   </a>
                 </div>
-                <Input id="password" type="password" {...register("password")} />
+                <Input id="password" type="password" {...register("password")} required />
               </Field>
               <Field>
                 {loginError && (
-                  <div className="flex items-center text-sm text-destructive">
+                  <div className="row gap-1 text-sm text-destructive">
                     <TriangleAlert className="h-4 w-4 mr-2" />
                     {loginError}
                   </div>
