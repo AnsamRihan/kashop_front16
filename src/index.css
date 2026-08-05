@@ -60,12 +60,12 @@
 
 :root {
     --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
+    --foreground: #4D444F;
     --card: #FFF8F6;
     --card-foreground: #221A18;
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
+    --primary: #693481;
     --primary-foreground: oklch(0.985 0 0);
     --secondary: oklch(0.97 0 0);
     --secondary-foreground: oklch(0.205 0 0);
@@ -95,13 +95,13 @@
 
 .dark {
     --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
+    --foreground: #D0C2D0;
+    --card: #1D141F;
     --card-foreground: oklch(0.985 0 0);
     --popover: oklch(0.205 0 0);
     --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
+    --primary: #693481;
+    --primary-foreground:oklch(0.985 0 0);
     --secondary: oklch(0.269 0 0);
     --secondary-foreground: oklch(0.985 0 0);
     --muted: oklch(0.269 0 0);
@@ -165,6 +165,6 @@
 
 @utility btn-gradient {
   @apply bg-linear-to-r from-button-start via-button-end to-button-start bg-size-[200%_auto]
-    transition-[background-position] duration-500 hover:bg-right hover:text-white;
+    transition-[background-position] duration-500 hover:bg-right;
 }
 
