@@ -69,7 +69,7 @@ export function LoginForm({className, ...props}) {
                   <FieldLabel htmlFor="password">Password</FieldLabel>
                   <a
                     href="#"
-                    className="ml-auto inline-block text-[10px] underline-offset-4 hover:underline text-end">
+                    className="w-full ml-auto inline-block text-[10px] underline-offset-4 hover:underline text-end">
                     Forgot your password?
                   </a>
                 </div>
@@ -85,7 +85,7 @@ export function LoginForm({className, ...props}) {
                 <Button className="btn-gradient" type="submit" disabled={isPending}>
                   {isPending ? "Logging in..." : "Login"}
                 </Button>
-                <FieldDescription>
+                <FieldDescription className="text-start">
                   Don&apos;t have an account?{" "}
                   <Link to="/register">
                     Sign up
