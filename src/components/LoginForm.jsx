@@ -20,11 +20,13 @@ import useLogin from "@/hooks/useLogin"
 import { useState } from "react"
 import { TriangleAlert } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 export function LoginForm({className, ...props}) {
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState("");
   const {register, handleSubmit} = useForm();
+  const {t} = useTranslation("login");
 
   const {
     mutate: postLogin,
@@ -52,25 +54,25 @@ export function LoginForm({className, ...props}) {
     <div className={cn("flex flex-col gap-6 ", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle className="font-semibold">Login to your account</CardTitle>
+          <CardTitle className="font-semibold">{t("title")}</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            {t("description")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)}>
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
+                <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
                 <Input id="email" type="email" placeholder="m@example.com" {...register("email")}/>
               </Field>
               <Field>
-                <div className="flex items-center">
-                  <FieldLabel htmlFor="password">Password</FieldLabel>
+                <div className="w-full row justify-between">
+                  <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
                   <a
                     href="#"
-                    className="w-full ml-auto inline-block text-[10px] underline-offset-4 hover:underline text-end">
-                    Forgot your password?
+                    className="inline-block text-[10px] underline-offset-4 hover:underline text-end">
+                    {t("forgotPassword")}
                   </a>
                 </div>
                 <Input id="password" type="password" {...register("password")} />
@@ -83,12 +85,12 @@ export function LoginForm({className, ...props}) {
                   </div>
                 )}
                 <Button className="btn-gradient" type="submit" disabled={isPending}>
-                  {isPending ? "Logging in..." : "Login"}
+                  {isPending ? t("loggingIn") : t("login")}
                 </Button>
                 <FieldDescription className="text-start">
-                  Don&apos;t have an account?{" "}
+                  {t("noAccount")}{" "}
                   <Link to="/register">
-                    Sign up
+                    {t("signUp")}
                   </Link>
                 </FieldDescription>
               </Field>

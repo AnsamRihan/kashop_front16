@@ -2,6 +2,7 @@ import React from 'react'
 import { RouterProvider } from 'react-router-dom'
 import router from './router.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import './i18next.jsx'
 
 export default function App() {
   // Create a client
