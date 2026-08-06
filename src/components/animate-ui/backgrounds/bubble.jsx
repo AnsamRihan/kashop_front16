@@ -89,7 +89,7 @@ function BubbleBackground({
       ref={containerRef}
       data-slot="bubble-background"
       className={cn(
-        'relative size-full overflow-hidden bg-gradient-to-br from-[#1b071f] via-[#2b0b35] to-[#16051c]',
+        'relative size-full overflow-hidden bg-linear-to-br from-[#1b071f] via-[#2b0b35] to-[#16051c]',
         className
       )}
       {...props}>
@@ -159,12 +159,12 @@ function BubbleBackground({
           style={{ transform: 'translateZ(0)', willChange: 'transform' }} />
 
         <motion.div
-          className="absolute inset-0 flex justify-center items-center origin-[calc(50%_-_800px)_calc(50%_+_200px)]"
+          className="absolute inset-0 flex justify-center items-center origin-[calc(50%-800px)_calc(50%+200px)]"
           animate={{ rotate: 360 }}
           transition={{ duration: 20, ease: 'linear', repeat: Infinity }}
           style={{ transform: 'translateZ(0)', willChange: 'transform' }}>
           <div
-            className="absolute rounded-full size-[160%] mix-blend-hard-light bg-[radial-gradient(circle_at_center,rgba(var(--fifth-color),0.8)_0%,rgba(var(--fifth-color),0)_50%)] top-[calc(50%-80%)] left-[calc(50%-80%)]" />
+            className="absolute rounded-full size-[160%] mix-blend-hard-light bg-[radial-gradient(circle_at_center,rgba(var(--fifth-color),0.8)_0%,rgba(var(--fifth-color),0)_50%)] top-[-30%] left-[-30%]" />
         </motion.div>
 
         {interactive && (
