@@ -11,8 +11,6 @@ export default function useLanguage() {
       language === "ar" ? "rtl" : "ltr";
 
     document.documentElement.lang = language;
-
-    localStorage.setItem("language", language);
   }, [language]);
 
   const changeLanguage = (lang) => {

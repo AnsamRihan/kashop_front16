@@ -1,5 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import detector from "i18next-browser-languagedetector";
 
 import enLogin from "./translations/en/login.json";
 import arLogin from "./translations/ar/login.json";
@@ -14,6 +15,7 @@ import enResetPassword from "./translations/en/resetPassword.json"
 import arResetPassword from "./translations/ar/resetPassword.json"
 
 i18n
+    .use(detector)
     .use(initReactI18next)
     .init({
         resources: {
@@ -31,7 +33,6 @@ i18n
             },
         },
 
-        lng: localStorage.getItem("language") || "en",
         fallbackLng: "en",
     });
 
