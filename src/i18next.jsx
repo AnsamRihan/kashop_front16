@@ -10,6 +10,9 @@ import arSignup from "./translations/ar/signup.json";
 import enForgotPassword from "./translations/en/forgotPassword.json"
 import arForgotPassword from "./translations/ar/forgotPassword.json"
 
+import enResetPassword from "./translations/en/resetPassword.json"
+import arResetPassword from "./translations/ar/resetPassword.json"
+
 i18n
     .use(initReactI18next)
     .init({
@@ -18,11 +21,13 @@ i18n
                 login: enLogin,
                 signup: enSignup,
                 forgotPassword: enForgotPassword,
+                resetPassword: enResetPassword,
             },
             ar: {
                 login: arLogin,
                 signup: arSignup,
                 forgotPassword: arForgotPassword,
+                resetPassword: arResetPassword,
             },
         },
 

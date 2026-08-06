@@ -43,10 +43,9 @@ export function ForgotPasswordForm({className, ...props}) {
   const onSubmit = async (data) => {
     postEmail(data, {
       onSuccess: (response) => {
-        console.log(response);
         if (response.data.success) {
           localStorage.setItem("email", data.email);
-          navigate("/verify-code");
+          navigate("/reset-password");
         }
       },
 
