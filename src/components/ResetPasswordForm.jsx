@@ -88,7 +88,7 @@ export function ResetPasswordForm({ className, ...props }) {
                                 <FieldLabel htmlFor="code">{t("code")}</FieldLabel>
                                 <Controller name="code" control={control} render={({ field }) => (
                                     <InputOTP maxLength={4} pattern={REGEXP_ONLY_DIGITS} value={field.value || ""}
-                                    onChange={field.onChange} aria-invalid={!!errors.code}>
+                                    onChange={field.onChange} aria-invalid={!!errors.code} dir="ltr">
                                         <InputOTPGroup>
                                             <InputOTPSlot index={0} aria-invalid={errors?.code}/>
                                             <InputOTPSlot index={1} aria-invalid={errors?.code}/>
