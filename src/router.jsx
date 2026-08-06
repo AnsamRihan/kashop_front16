@@ -6,6 +6,8 @@ import Cart from "./pages/cart/Cart.jsx";
 import Register from "./pages/register/Register.jsx";
 import Login from "./pages/login/Login.jsx";
 import AuthLayout from "./layouts/AuthLayout.jsx";
+import ForgotPaassword from "./pages/forgotPassword/ForgotPassword.jsx";
+import VerifyCode from "./pages/verifyCode/VerifyCode.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,12 @@ const router = createBrowserRouter([
         {
             path: "/login",
             element: <Login />,
+        },{
+            path: "/forgot-password",
+            element: <ForgotPaassword />,
+        },{
+            path: "/verify-code",
+            element: <VerifyCode />,
         }
     ]
   }

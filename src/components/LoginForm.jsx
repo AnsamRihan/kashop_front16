@@ -69,11 +69,11 @@ export function LoginForm({className, ...props}) {
               <Field>
                 <div className="w-full row justify-between">
                   <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
-                  <a
-                    href="#"
+                  <Link
+                    to="/forgot-password"
                     className="inline-block text-[10px] underline-offset-4 hover:underline text-end">
                     {t("forgotPassword")}
-                  </a>
+                  </Link>
                 </div>
                 <Input id="password" type="password" {...register("password")} required />
               </Field>
