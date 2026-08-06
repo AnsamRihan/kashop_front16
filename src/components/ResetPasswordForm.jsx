@@ -47,7 +47,8 @@ export function ResetPasswordForm({ className, ...props }) {
     } = useResetPassword();
 
     const onSubmit = async (data) => {
-         const resetData = {
+        console.log(data.code);
+        const resetData = {
             ...data,
             email: localStorage.getItem("email"),
         };
@@ -90,10 +91,21 @@ export function ResetPasswordForm({ className, ...props }) {
                                     <InputOTP maxLength={4} pattern={REGEXP_ONLY_DIGITS} value={field.value || ""}
                                     onChange={field.onChange} aria-invalid={!!errors.code}>
                                         <InputOTPGroup>
-                                            <InputOTPSlot index={0} aria-invalid={errors?.code}/>
-                                            <InputOTPSlot index={1} aria-invalid={errors?.code}/>
-                                            <InputOTPSlot index={2} aria-invalid={errors?.code}/>
-                                            <InputOTPSlot index={3} aria-invalid={errors?.code}/>
+                                            {i18n.language === "ar" ? (
+                                                <>
+                                                    <InputOTPSlot index={3} aria-invalid={errors?.code} />
+                                                    <InputOTPSlot index={2} aria-invalid={errors?.code} />
+                                                    <InputOTPSlot index={1} aria-invalid={errors?.code} />
+                                                    <InputOTPSlot index={0} aria-invalid={errors?.code} />
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <InputOTPSlot index={0} aria-invalid={errors?.code} />
+                                                    <InputOTPSlot index={1} aria-invalid={errors?.code} />
+                                                    <InputOTPSlot index={2} aria-invalid={errors?.code} />
+                                                    <InputOTPSlot index={3} aria-invalid={errors?.code} />
+                                                </>
+                                            )}
                                         </InputOTPGroup>
                                     </InputOTP>
                                 )}
