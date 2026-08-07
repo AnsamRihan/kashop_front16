@@ -34,6 +34,9 @@
     --color-card: var(--card);
     --color-foreground: var(--foreground);
     --color-background: var(--background);
+    --color-secondary-background: var(--secondary-background);
+    --color-tertiary-background: var(--tertiary-background);
+    --color-background-border: var(--background-border);
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
@@ -57,6 +60,9 @@
 
 :root {
     --background: #FFF8F6;
+    --secondary-background: #FFF0ED;
+    --tertiary-background: #FFFFFF;
+    --background-border: #D0C2D01A;
     --foreground: #4D444F;
     --card: #FFF8F6;
     --card-foreground: #221A18;
@@ -86,7 +92,10 @@
 }
 
 .dark {
-    --background: #1D141F;
+    --background: #160f17;
+    --secondary-background: #1D141F;
+    --tertiary-background: #1D141F;
+    --background-border: #D0C2D01A;
     --foreground: #D0C2D0;
     --card: #1D141F;
     --card-foreground: oklch(0.985 0 0);
@@ -151,10 +160,14 @@
 }
 
 @utility sidebar-link{
-    @apply row gap-4 px-4 py-3 rounded-[12px] hover:text-primary dark:hover:text-white hover:bg-sidebar-navlink-background;
+    @apply capitalize row gap-4 px-4 py-3 rounded-[12px] hover:text-primary dark:hover:text-white hover:bg-sidebar-navlink-background;
 }
 
 @utility nav-link{
-    @apply hover:text-primary font-medium text-sm tracking-[0.14px]
+    @apply capitalize hover:text-primary font-medium text-sm tracking-[0.14px]
     hover:underline hover:decoration-2 hover:underline-offset-8 transition-all duration-200 ease-in-out;
+}
+
+@utility footer-link{
+    @apply text-xs xs:text-sm font-medium capitalize hover:text-primary transition-all duration-200 ease-in-out;
 }
