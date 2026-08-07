@@ -60,7 +60,7 @@ export function SideBar() {
                         <UserMenu mobile />
                     ) : (
                         <Link to="/login" className="w-full">
-                            <Button variant="gradiant" className="w-full" size="lg">
+                            <Button variant="gradiant" className="w-full">
                                 {t("signIn")}
                             </Button>
                         </Link>

@@ -26,6 +26,9 @@ import arNavLinks from "./translations/ar/navLinks.json"
 import enFooter from "./translations/en/footer.json"
 import arFooter from "./translations/ar/footer.json"
 
+import enHome from "./translations/en/home.json"
+import arHome from "./translations/ar/home.json"
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -40,6 +43,7 @@ i18n
                 userMenuItems: enUserMenuItems,
                 navLinks: enNavLinks,
                 footer: enFooter,
+                home: enHome,
             },
             ar: {
                 login: arLogin,
@@ -50,6 +54,7 @@ i18n
                 userMenuItems: arUserMenuItems,
                 navLinks: arNavLinks,
                 footer: arFooter,
+                home: arHome,
             },
         },
 

@@ -116,7 +116,7 @@ export default function DesktopUserMenu({ onLogout }) {
         <DropdownMenuContent className="min-w-56 rounded-lg p-2"
           align="end" side="bottom" sideOffset={8}>
           <Link to="/login" className="block w-full">
-            <Button variant="gradiant" className="w-full" size="lg">
+            <Button variant="gradiant" className="w-full">
               {t("signIn")}
             </Button>
           </Link>
