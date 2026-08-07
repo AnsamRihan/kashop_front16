@@ -54,7 +54,7 @@ export default function Navbar() {
               <Button variant="ghost" className="relative p-0 group">
                 <ShoppingCart className="size-4 xxs:size-5 group-hover:text-primary"/>
 
-                <Badge className="absolute -right-2 top-0 size-4 rounded-full p-1 text-[7.5px] font-semibold">
+                <Badge className="absolute -right-2 -top-1 size-4 rounded-full p-1 text-[7.5px] font-semibold">
                   20
                 </Badge>
               </Button>

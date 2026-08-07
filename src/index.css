@@ -37,6 +37,7 @@
     --color-background: var(--background);
     --color-secondary-background: var(--secondary-background);
     --color-tertiary-background: var(--tertiary-background);
+    --color-icon-background: var(--icon-background);
     --color-background-border: var(--background-border);
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
@@ -63,6 +64,7 @@
     --background: #FFF8F6;
     --secondary-background: #FFF0ED;
     --tertiary-background: #FFFFFF;
+    --icon-background: #F5E5E1;
     --background-border: #D0C2D01A;
     --foreground: #4D444F;
     --heading-foreground: #221A18;
@@ -97,6 +99,7 @@
     --background: #160f17;
     --secondary-background: #1D141F;
     --tertiary-background: #1D141F;
+    --icon-background: #33252F;
     --background-border: #D0C2D01A;
     --foreground: #D0C2D0;
     --heading-foreground: #F3E8F1;
@@ -124,6 +127,8 @@
     --sidebar-input-backgroung: #382E2C66;
     --sidebar-input-border: #D0C2D033;
     --sidebar-navlink-background: #834D9B;
+
+    --animate-rotation: rotation 1s linear infinite;
 }
 
 @layer base {
@@ -173,4 +178,42 @@
 
 @utility footer-link{
     @apply text-xs xs:text-sm font-medium capitalize hover:text-primary transition-all duration-200 ease-in-out;
+}
+
+@utility heading{
+    @apply capitalize font-semibold text-lg xxs:text-2xl sm:text-3xl text-heading-foreground tracking-[-0.32px];
+}
+
+@utility view-all-link{
+    @apply capitalize text-primary font-medium text-sm xxs:text-base text-center hover:underline
+    hover:underline-offset-4 transition-all duration-200 ease-in-out;
+}
+
+@utility category{
+    @apply capitalize circle bg-icon-background py-2 px-6 font-medium text-xs xs:text-sm tracking-[0.14px]
+    hover:text-primary-foreground hover:bg-primary transition-all duration-150 ease-in-out;
+}
+
+@utility loader {
+    --loader-color: var(--color-primary);
+    --loader-size: 1px;
+
+    width: calc(48 * var(--loader-size));
+    height: calc(48 * var(--loader-size));
+    border-radius: 50%;
+    display: inline-block;
+    border-top: calc(3 * var(--loader-size)) solid var(--loader-color);
+    border-right: calc(3 * var(--loader-size)) solid transparent;
+    box-sizing: border-box;
+    animation: var(--animate-rotation);
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

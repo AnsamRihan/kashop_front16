@@ -4,5 +4,10 @@
         "description": "Shop a wide selection of products, carefully chosen to bring you quality, value, and convenience.",
         "shopNow": "Shop now",
         "exploreCategories": "Explore categories"
-    }
+    },
+    "categories" : {
+        "title" : "Browse Categories",
+        "allProducts": "All Products"
+    },
+    "viewAll" : "View All"
 }

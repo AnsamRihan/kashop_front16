@@ -25,7 +25,7 @@ export default function Footer() {
         <div className='w-full md:w-fit'>
           <ul className='w-full md:w-fit row justify-between flex-wrap text-start gap-6'>
             {footerLinks.map( (link) => 
-              <li className='footer-link'>
+              <li key={link.key} className='footer-link'>
                 <Link to={link.path}>{t(`footerLinks.${link.key}`)}</Link>
               </li>
              )}

@@ -25,7 +25,7 @@ export function SideBar() {
     return (
         <Drawer swipeDirection={direction}>
             <DrawerTrigger 
-            render={<Button variant="ghost" className='hover:text-primary p-0'>
+            render={<Button variant="ghost" className='h-7 xxs:h-8 xs:h-9.5 md:h-10 hover:text-primary p-0 center'>
                 <TextAlignJustify className="size-4 xxs:size-5"/>
             </Button>} />
 
