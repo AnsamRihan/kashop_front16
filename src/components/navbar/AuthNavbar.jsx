@@ -11,11 +11,11 @@ export default function AuthNavbar() {
           <div className='w-full h-full flex items-center justify-between'>
             {/* Logo */}
             <div className='center h-full'>
-              <Link to="/" className='text-primary text-2xl xs:text-[28px] sm:text-[32px] font-bold tracking-[-0.32px]'>Kashop</Link>
+              <Link to="/" className='text-primary text-2xl xs:text-[28px] sm:text-[30px] font-bold tracking-[-0.32px]'>Kashop</Link>
             </div>
 
             {/* Icons */}
-            <div className='row'>
+            <div className='row gap-3 sm:gap-4'>
               {/* Language Switcher */}
               <LanguageSwitcher />
               {/* Theme Toggle */}

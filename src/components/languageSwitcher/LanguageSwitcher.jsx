@@ -15,8 +15,8 @@ export default function LanguageSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button variant="ghost" className='hover:text-primary'>
-            <Earth className="size-5" />
+          <Button variant="ghost" className='hover:text-primary p-0'>
+            <Earth className="size-4 xxs:size-5" />
           </Button>
         }
       />

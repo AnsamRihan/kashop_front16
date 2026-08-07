@@ -1,0 +1,19 @@
+import { House, Shapes, ShoppingBag } from "lucide-react";
+
+export const navLinks = [
+    {
+      key: "home",
+      path: "/",
+      icon: House,
+    },
+    {
+      key: "shop",
+      path: "#",
+      icon: ShoppingBag,
+    },
+    {
+      key: "categories",
+      path: "#",
+      icon: Shapes ,
+    }
+  ]

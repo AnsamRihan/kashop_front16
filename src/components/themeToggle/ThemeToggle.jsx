@@ -10,13 +10,12 @@ export default function ThemeToggle() {
   };
 
   return (
-    <Button variant="ghost focus:bg-transparent" size="icon"
-      onClick={toggleTheme}
-      className="text-foreground hover:text-primary">
+    <Button variant="ghost" onClick={toggleTheme}
+      className="hover:text-primary p-0">
       {theme === "dark" ? (
-        <Sun className="size-5" />
+        <Sun className="size-4 xxs:size-5" />
       ) : (
-        <Moon className="size-5" />
+        <Moon className="size-4 xxs:size-5" />
       )}
     </Button>
   );

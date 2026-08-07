@@ -20,8 +20,11 @@ import { useState } from "react"
 import { TriangleAlert } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
+import useAuthStore from "@/store/useAuthStore"
 
 export function LoginForm({className, ...props}) {
+  const setToken = useAuthStore((state) => state.setToken);
+
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState("");
   const {register, handleSubmit} = useForm();
@@ -36,7 +39,7 @@ export function LoginForm({className, ...props}) {
     postLogin(data, {
       onSuccess: (response) => {
         if (response.data.success) {
-          localStorage.setItem("accessToken", response.data.accessToken);
+          setToken(response.data.accessToken);
           navigate("/");
         }
       },
@@ -83,7 +86,7 @@ export function LoginForm({className, ...props}) {
                     {loginError}
                   </div>
                 )}
-                <Button className="btn-gradient" type="submit" disabled={isPending}>
+                <Button variant="gradiant" type="submit" disabled={isPending}>
                   {isPending ? t("loggingIn") : t("login")}
                 </Button>
                 <FieldDescription className="text-start">

@@ -145,7 +145,7 @@ export function ResetPasswordForm({ className, ...props }) {
                                         {resetPasswordError}
                                     </div>
                                 )}
-                                <Button className="btn-gradient" type="submit" disabled={isPending || !confirmPassword 
+                                <Button variant="gradiant" type="submit" disabled={isPending || !confirmPassword 
                                     || Object.keys(errors).length > 0 || passwordMismatch
                                 }>
                                     {isPending ? t("resettingPassword") : t("resetPassword")}

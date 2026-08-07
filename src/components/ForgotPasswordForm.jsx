@@ -86,7 +86,7 @@ export function ForgotPasswordForm({className, ...props}) {
                     {sendCodeError}
                   </div>
                 )}
-                <Button className="btn-gradient" type="submit" disabled={isPending || !email 
+                <Button variant="gradiant" type="submit" disabled={isPending || !email 
                     || Object.keys(errors).length > 0}>
                     {isPending ? t("sendingCode") : t("sendCode")}
                 </Button>

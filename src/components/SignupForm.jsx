@@ -150,7 +150,7 @@ export function SignupForm({...props}) {
                     {signupError}
                   </div>
                 )}
-                <Button  className="btn-gradient" type="submit" disabled={!confirmPassword || passwordMismatch 
+                <Button variant="gradiant" type="submit" disabled={!confirmPassword || passwordMismatch 
                   || Object.keys(errors).length > 0 || isPending}>
                     {isPending ? t("creatingAccount") : t("createAccount")}
                 </Button>

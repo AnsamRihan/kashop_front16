@@ -14,6 +14,15 @@ import arForgotPassword from "./translations/ar/forgotPassword.json"
 import enResetPassword from "./translations/en/resetPassword.json"
 import arResetPassword from "./translations/ar/resetPassword.json"
 
+import enSearchInput from "./translations/en/searchInput.json"
+import arSearchInput from "./translations/ar/searchInput.json"
+
+import enUserMenuItems from "./translations/en/userMenuItems.json"
+import arUserMenuItems from "./translations/ar/userMenuItems.json"
+
+import enNavLinks from "./translations/en/navLinks.json"
+import arNavLinks from "./translations/ar/navLinks.json"
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -24,12 +33,18 @@ i18n
                 signup: enSignup,
                 forgotPassword: enForgotPassword,
                 resetPassword: enResetPassword,
+                search: enSearchInput,
+                userMenuItems: enUserMenuItems,
+                navLinks: enNavLinks,
             },
             ar: {
                 login: arLogin,
                 signup: arSignup,
                 forgotPassword: arForgotPassword,
                 resetPassword: arResetPassword,
+                search: arSearchInput,
+                userMenuItems: arUserMenuItems,
+                navLinks: arNavLinks,
             },
         },
 
