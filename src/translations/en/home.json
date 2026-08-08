@@ -1,16 +1,30 @@
 {
-    "hero" : {
+    "hero": {
         "title": "Everything you need, all in one place",
         "description": "Shop a wide selection of products, carefully chosen to bring you quality, value, and convenience.",
         "shopNow": "Shop now",
         "exploreCategories": "Explore categories"
     },
-    "categories" : {
-        "title" : "Browse Categories",
+    "categories": {
+        "title": "Browse Categories",
         "allProducts": "All Products"
     },
     "products": {
         "title": "Featured Products"
     },
-    "viewAll" : "View All"
+    "features": {
+        "simpleShopping": {
+            "title": "Simple Shopping Experience",
+            "description": "Our platform is designed for clarity. No clutter, just quality curation at your fingertips."
+        },
+        "flexiblePayments": {
+            "title": "Flexible Payments",
+            "description": "We support Visa & Cash on Delivery for your convenience. Secure transactions guaranteed."
+        },
+        "expressDelivery": {
+            "title": "Express Delivery",
+            "description": "Carefully packaged and promptly delivered to your door within 2-3 business days."
+        }
+    },
+    "viewAll": "View All"
 }
