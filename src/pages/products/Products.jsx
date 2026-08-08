@@ -7,8 +7,13 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Separator } from '@/components/ui/separator'
 import useProducts from '@/hooks/useProducts'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { productSortOptions } from '@/constants/productSortOptions'
+import { productSortItems } from '@/constants/productSortItems'
 
 export default function Products() {
+  const { t } = useTranslation("products");
+
   const items = [
     { label: "Sort By:", value: null },
     { label: "Alphabetically, A-Z", value: "az" },
@@ -19,36 +24,9 @@ export default function Products() {
     { label: "Rate, high to low", value: "rateHighToLow" },
   ]
 
-  const sortOptions = {
-      az: {
-          sortBy: "name",
-          ascending: true,
-      },
-      za: {
-          sortBy: "name",
-          ascending: false,
-      },
-      priceLowToHigh: {
-          sortBy: "price",
-          ascending: true,
-      },
-      priceHighToLow: {
-          sortBy: "price",
-          ascending: false,
-      },
-      rateLowToHigh: {
-          sortBy: "rate",
-          ascending: true,
-      },
-      rateHighToLow: {
-          sortBy: "rate",
-          ascending: false,
-      },
-  };
-
   const [sortBy, setSortBy] = useState("az");
   const [page, setPage] = useState(1);
-  const selectedSort = sortOptions[sortBy];
+  const selectedSort = productSortOptions[sortBy];
   const limit = 8;
 
   const { data, isLoading, isError, error } = useProducts({
@@ -70,13 +48,13 @@ export default function Products() {
             <BreadcrumbList>
 
               <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                <BreadcrumbLink href="/">{t("home")}</BreadcrumbLink>
               </BreadcrumbItem>
 
               <BreadcrumbSeparator />
 
               <BreadcrumbItem>
-                <BreadcrumbPage>Shop</BreadcrumbPage>
+                <BreadcrumbPage>{t("shop")}</BreadcrumbPage>
               </BreadcrumbItem>
 
             </BreadcrumbList>
@@ -85,10 +63,10 @@ export default function Products() {
           {/*Title */}
           <div className='stack items-start gap-3 w-full'>
             <h1 className='capitalize text-heading-foreground font-bold text-3xl xs:text-4xl md:text-5xl tracking-[-0.96px]'>
-              shop
+              {t("shop")}
             </h1>
             <p className='text-sm xs:text-base md:text-lg'>
-              Find something you'll love to bring home.
+              {t("description")}
             </p>
           </div>
 
@@ -98,33 +76,44 @@ export default function Products() {
             {/*Filter Area */}
             <div className='center justify-between w-full'>
               <p className='text-xs xxs:text-sm'>
-                {!isLoading && !isError ? (
+                {!isLoading && !isError && data?.response ? (
                   <span className='font-bold text-heading-foreground'>
                     {data.response.totalCount}
                   </span>
                 ):(
                   <span className='font-bold text-heading-foreground'>
-                    NO
+                    {t("no")}
                   </span>
                 )}
-                {" "}products found
+                {" "}{t("productsFound")}
               </p>
 
               <div className='row gap-6'>
 
                 <div className='row'>
                   <span className='capitalize text-xs xxs:text-sm hidden md:block'>
-                    sort by:
+                    {t("sortBy")}
                   </span>
-                  <Select items={items} defaultValue="az" value={sortBy} onValueChange={(value) => setSortBy(value)}>
-                    <SelectTrigger className="text-xs xxs:text-sm bg-secondary-background">
-                      <SelectValue />
+                  <Select value={sortBy} onValueChange={setSortBy}>
+                    <SelectTrigger className="w-48 text-xs xxs:text-sm bg-secondary-background">
+                      <SelectValue>
+                        {t(
+                          productSortItems.find(
+                            (item) => item.value === sortBy
+                          )?.translationKey
+                        )}
+                      </SelectValue>
                     </SelectTrigger>
-                    <SelectContent>
+
+                    <SelectContent className="w-48">
                       <SelectGroup>
-                        {items.map((item) => (
-                          <SelectItem key={item.value} value={item.value} className="text-xs xxs:text-sm">
-                            {item.label}
+                        {productSortItems.map((item) => (
+                          <SelectItem
+                            key={item.value}
+                            value={item.value}
+                            className="text-xs xxs:text-sm"
+                          >
+                            {t(item.translationKey)}
                           </SelectItem>
                         ))}
                       </SelectGroup>

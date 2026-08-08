@@ -7,6 +7,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { useTranslation } from "react-i18next";
 
 export default function AppPagination({
   page,
@@ -14,6 +15,8 @@ export default function AppPagination({
   onPageChange,
 }) {
     
+  const { t } = useTranslation("pagination");
+
   const goToPage = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       onPageChange(newPage);
@@ -44,6 +47,7 @@ export default function AppPagination({
         <PaginationItem>
           <PaginationPrevious
             href="#"
+            text={t("previous")}
             onClick={(e) => {
               e.preventDefault();
               goToPage(page - 1);
@@ -76,6 +80,7 @@ export default function AppPagination({
         <PaginationItem>
           <PaginationNext
             href="#"
+            text={t("next")}
             onClick={(e) => {
               e.preventDefault();
               goToPage(page + 1);

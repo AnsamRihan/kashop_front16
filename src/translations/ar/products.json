@@ -1,0 +1,14 @@
+{
+  "home": "الرئيسية",
+  "shop": "المتجر",
+  "description": "اعثر على شيء ستحب أن تأخذه معك إلى المنزل.",
+  "sortBy": "ترتيب حسب:",
+  "productsFound": "منتجات",
+  "alphabeticallyAZ": "أبجديًا، أ-ي",
+  "alphabeticallyZA": "أبجديًا، ي-أ",
+  "priceLowToHigh": "السعر، من الأقل إلى الأعلى",
+  "priceHighToLow": "السعر، من الأعلى إلى الأقل",
+  "rateLowToHigh": "التقييم، من الأقل إلى الأعلى",
+  "rateHighToLow": "التقييم، من الأعلى إلى الأقل",
+  "no" : "لا"
+}

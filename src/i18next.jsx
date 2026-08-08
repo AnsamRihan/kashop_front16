@@ -29,6 +29,12 @@ import arFooter from "./translations/ar/footer.json"
 import enHome from "./translations/en/home.json"
 import arHome from "./translations/ar/home.json"
 
+import enProducts from "./translations/en/products.json"
+import arProducts from "./translations/ar/products.json"
+
+import enPagination from "./translations/en/pagination.json"
+import arPagination from "./translations/ar/pagination.json"
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -44,6 +50,8 @@ i18n
                 navLinks: enNavLinks,
                 footer: enFooter,
                 home: enHome,
+                products: enProducts,
+                pagination: enPagination,
             },
             ar: {
                 login: arLogin,
@@ -55,6 +63,8 @@ i18n
                 navLinks: arNavLinks,
                 footer: arFooter,
                 home: arHome,
+                products: arProducts,
+                pagination: arPagination,
             },
         },
 
