@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -49,15 +51,20 @@
 
     /*-----------------------------------------------*/
 
+    /*Font Family*/
+    --font-sans: "Plus Jakarta Sans", sans-serif;
+
     /*Breakpoints*/
     --breakpoint-xs: 500px;
     --breakpoint-xxs: 350px;
-    
+
     /* Buttons */
     --color-button-start: #834d9b;
     --color-button-end: #d04ed6;
 
     --color-btn-gradient-foreground: oklch(0.985 0 0);
+
+    --animate-rotation: rotation 1s linear infinite;
 }
 
 :root {
@@ -79,7 +86,8 @@
     --muted: #FFF8F6;
     --muted-foreground: oklch(0.556 0 0);
     --accent: #FDE7F5;
-    --accent-foreground:#221A18;;
+    --accent-foreground: #221A18;
+    ;
     --destructive: oklch(0.577 0.245 27.325);
     --border: oklch(0.922 0 0);
     --input: oklch(0.922 0 0);
@@ -98,7 +106,7 @@
 .dark {
     --background: #160f17;
     --secondary-background: #1D141F;
-    --tertiary-background: #1D141F;
+    --tertiary-background: #241A27;
     --icon-background: #33252F;
     --background-border: #D0C2D01A;
     --foreground: #D0C2D0;
@@ -108,7 +116,7 @@
     --popover: #1D141F;
     --popover-foreground: #D0C2D0;
     --primary: #EAB2FF;
-    --primary-foreground:#38263D;
+    --primary-foreground: #38263D;
     --secondary: oklch(0.269 0 0);
     --secondary-foreground: oklch(0.985 0 0);
     --muted: #1D141F;
@@ -127,71 +135,69 @@
     --sidebar-input-backgroung: #382E2C66;
     --sidebar-input-border: #D0C2D033;
     --sidebar-navlink-background: #834D9B;
-
-    --animate-rotation: rotation 1s linear infinite;
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+
+    body {
+        @apply bg-background text-foreground;
+        font-family: "Plus Jakarta Sans", sans-serif;
     }
-  html {
-    @apply font-sans;
+
+    html {
+        @apply font-sans;
     }
 }
 
-@utility test{
+@utility test {
     @apply border border-red-500;
 }
 
-@utility container{
+@utility container {
     @apply mx-auto px-5 h-full max-w-full xs:px-7 lg:max-w-372;
 }
 
-@utility row{
+@utility row {
     @apply flex flex-row items-center gap-2;
 }
 
-@utility stack{
+@utility stack {
     @apply flex flex-col items-center gap-2;
 }
 
-@utility center{
+@utility center {
     @apply flex items-center justify-center;
 }
 
-@utility circle{
+@utility circle {
     @apply rounded-full;
 }
 
-@utility sidebar-link{
+@utility sidebar-link {
     @apply capitalize row gap-4 px-4 py-3 rounded-[12px] hover:text-primary dark:hover:text-white hover:bg-sidebar-navlink-background;
 }
 
-@utility nav-link{
-    @apply capitalize hover:text-primary font-medium text-sm tracking-[0.14px]
-    hover:underline hover:decoration-2 hover:underline-offset-8 transition-all duration-200 ease-in-out;
+@utility nav-link {
+    @apply capitalize hover:text-primary font-medium text-sm tracking-[0.14px] hover:underline hover:decoration-2 hover:underline-offset-8 transition-all duration-200 ease-in-out;
 }
 
-@utility footer-link{
+@utility footer-link {
     @apply text-xs xs:text-sm font-medium capitalize hover:text-primary transition-all duration-200 ease-in-out;
 }
 
-@utility heading{
+@utility heading {
     @apply capitalize font-semibold text-lg xxs:text-2xl sm:text-3xl text-heading-foreground tracking-[-0.32px];
 }
 
-@utility view-all-link{
-    @apply capitalize text-primary font-medium text-sm xxs:text-base text-center hover:underline
-    hover:underline-offset-4 transition-all duration-200 ease-in-out;
+@utility view-all-link {
+    @apply capitalize text-primary font-medium text-sm xxs:text-base text-center hover:underline hover:underline-offset-4 transition-all duration-200 ease-in-out;
 }
 
-@utility category{
-    @apply capitalize circle bg-icon-background py-2 px-6 font-medium text-xs xs:text-sm tracking-[0.14px]
-    hover:text-primary-foreground hover:bg-primary transition-all duration-150 ease-in-out;
+@utility category {
+    @apply capitalize circle bg-icon-background py-2 px-6 font-medium text-xs xs:text-sm tracking-[0.14px] hover:text-primary-foreground hover:bg-primary transition-all duration-150 ease-in-out;
 }
 
 @utility loader {

@@ -6,15 +6,20 @@ export default function useCategories() {
 
     const { i18n } = useTranslation()
 
-    const getCategories = async () => {
-        const resopnse = await axiosInstance.get("/Categories?limit=8");
+    const getCategories = async ({ limit=8 }) => {
+        const resopnse = await axiosInstance.get("/Categories", {
+                params:{
+                    limit
+                }
+            }
+        );
         return resopnse.data;
     }
 
     const query = useQuery({
         queryKey: ['Categories', i18n.language],
         queryFn: getCategories,
-        staleTime: 1000 * 60 * 1
+        staleTime: 1000 * 60 * 5
     })
 
     return query;

@@ -2,11 +2,16 @@ import useCategories from '@/hooks/useCategories';
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom';
+import CircularProgress from '../CircularProgress/CircularProgress';
+import ErrorFetchingData from '../ErrorFetchingData.jsx/ErrorFetchingData';
 
 export default function Categories() {
 
     const { t } = useTranslation("home");
-    const {data, isLoading, isError} = useCategories();
+    const {data, isLoading, isError, error} = useCategories();
+    if(isError){
+        console.log("hello error : ", error);
+    }
  
     return (
         <div className='pb-8'>
@@ -23,17 +28,11 @@ export default function Categories() {
                     </div>
 
                     {isLoading && (
-                        <div className="w-full center py-20">
-                            <span className="loader"></span>
-                        </div>
+                        <CircularProgress />
                     )}
 
                     {isError && (
-                        <div className="w-full py-20 center">
-                            <p className="text-red-500 text-base">
-                            Error getting data!
-                            </p>
-                        </div>
+                        <ErrorFetchingData error={error}/>
                     )}
 
                     {!isLoading && !isError && (

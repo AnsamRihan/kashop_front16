@@ -9,5 +9,8 @@
         "title" : "Browse Categories",
         "allProducts": "All Products"
     },
+    "products": {
+        "title": "Featured Products"
+    },
     "viewAll" : "View All"
 }
