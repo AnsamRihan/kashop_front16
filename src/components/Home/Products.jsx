@@ -8,7 +8,7 @@ export default function Products() {
     const { t } = useTranslation("home");
 
     return (
-        <div className='pb-8'>
+        <section className='pb-8'>
             <div className="container">
                 <div className='w-full stack items-start gap-8'>
                     {/*Title area */}
@@ -26,6 +26,6 @@ export default function Products() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

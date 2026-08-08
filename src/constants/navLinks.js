@@ -8,7 +8,7 @@ export const navLinks = [
     },
     {
       key: "shop",
-      path: "#",
+      path: "/shop",
       icon: ShoppingBag,
     },
     {

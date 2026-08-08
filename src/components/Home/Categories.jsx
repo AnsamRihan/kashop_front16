@@ -14,7 +14,7 @@ export default function Categories() {
     }
  
     return (
-        <div className='pb-8'>
+        <section className='pb-8'>
             <div className="container">
                 <div className='w-full stack items-start gap-8'>
                     {/*Title area */}
@@ -50,6 +50,6 @@ export default function Categories() {
                     )}
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

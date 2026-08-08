@@ -8,7 +8,7 @@ export default function Hero() {
     const { t } = useTranslation("home");
 
     return (
-        <div className='my-8'>
+        <section className='my-8'>
             <div className="container">
                 <div className='w-full bg-secondary-background p-8 rounded-[24px] center'>
                     <div className=' stack gap-5 text-center max-w-167.75'>
@@ -36,6 +36,6 @@ export default function Hero() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

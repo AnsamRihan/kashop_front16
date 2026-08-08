@@ -7,7 +7,7 @@ export default function Features() {
     const { t } = useTranslation("home");
 
     return (
-        <div className='mb-8'>
+        <section className='mb-8'>
             <div className="container">
                 <div className='bg-secondary-background/80 rounded-lg p-8 center gap-6 lg:gap-12 xl:gap-16 flex-wrap text-center'>
                     <div className='p-4 lg:p-8 stack gap-3.75'>
@@ -47,6 +47,6 @@ export default function Features() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
