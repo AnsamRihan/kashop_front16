@@ -20,7 +20,8 @@ export default function ProductCard({ product }) {
                 {/*Product Info */}
                 <div className="w-full h-full stack justify-between gap-4">
                     <div className="w-full stack items-start gap-1.5">
-                        <h3 className="capitalize text-heading-foreground font-semibold text-[15px]">
+                        <h3 className="capitalize text-heading-foreground font-semibold text-[15px]
+                        group-hover:text-primary transition-all duration-150 ease-in-out">
                             {product.name}
                         </h3>
 
@@ -28,7 +29,7 @@ export default function ProductCard({ product }) {
                         <div className="row gap-1">
                             <div className="row gap-0">
                                 {Array.from({ length: Math.floor(product.rate) }, (_, i) => (
-                                    <Star className="size-3 text-primary" fill="currentColor" strokeWidth={0}/>
+                                    <Star key={i} className="size-3 text-primary" fill="currentColor" strokeWidth={0}/>
                                 ))}
                             </div>
                             <span className="text-heading-foreground font-semibold text-xs">

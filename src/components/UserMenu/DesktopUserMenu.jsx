@@ -20,22 +20,17 @@ import { Button } from "@/components/ui/button"
 import { useTranslation } from "react-i18next"
 import { userMenuItems } from "@/constants/userMenuItems"
 import useAuthStore from "@/store/useAuthStore"
+import CircularProgress from "../CircularProgress/CircularProgress"
+import ErrorFetchingData from "../ErrorFetchingData.jsx/ErrorFetchingData"
+import useUserStore from "@/store/useUserStore"
 
-export default function DesktopUserMenu({ onLogout }) {
+export default function DesktopUserMenu({ onLogout, isLoading, isError, error}) {
   const token = useAuthStore((state) => state.token);
   const isLoggedIn = !!token;
+  
+  const user = useUserStore( (set) => set.user );
 
   const { t } = useTranslation("userMenuItems")
-
-  const user = {
-    name: "Ansam",
-    email: "ansam@example.com",
-    avatar: "",
-  }
-
-  const handleLogout = () => {
-    console.log("Logout")
-  }
 
   return (
     <DropdownMenu>
@@ -43,9 +38,9 @@ export default function DesktopUserMenu({ onLogout }) {
         render={
           <Button variant="ghost" size="icon" className="rounded-full p-1 hover:text-primary">
             <Avatar className="size-8">
-              {isLoggedIn ? (
+              {isLoggedIn && !isError && user ? (
                 <AvatarFallback className="text-sm bg-primary text-primary-foreground">
-                  {user.name.slice(0, 2).toUpperCase()}
+                  {user.fullName?.slice(0, 2).toUpperCase()}
                 </AvatarFallback>
               ) : (
                 <AvatarFallback className="bg-primary text-primary-foreground">
@@ -63,27 +58,33 @@ export default function DesktopUserMenu({ onLogout }) {
           {/* user info */}
           <DropdownMenuGroup>
             <DropdownMenuLabel className="p-0 font-normal">
-              <div className="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
-                <Avatar className="size-8">
-                  <AvatarImage
-                    src={user.avatar}
-                    alt={user.name}
-                  />
-                  <AvatarFallback className="bg-primary text-primary-foreground">
-                    {user.name.slice(0, 2).toUpperCase()}
-                  </AvatarFallback>
-                </Avatar>
+              {isLoading && (
+                <CircularProgress />
+              )}
 
-                <div className="grid min-w-0 flex-1 leading-tight">
-                  <span className="truncate font-medium">
-                    {user.name}
-                  </span>
+              {isError && (
+                <ErrorFetchingData error={error} />
+              )}
 
-                  <span className="truncate text-xs text-muted-foreground">
-                    {user.email}
-                  </span>
+              {!isLoading && !isError && user && (
+                <div className="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
+                  <Avatar className="size-8">
+                    <AvatarFallback className="bg-primary text-primary-foreground">
+                      {user.fullName.slice(0, 2).toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+
+                  <div className="grid min-w-0 flex-1 leading-tight">
+                    <span className="truncate font-medium">
+                      {user.fullName}
+                    </span>
+
+                    <span className="truncate text-xs text-muted-foreground">
+                      {user.email}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </DropdownMenuLabel>
           </DropdownMenuGroup>
           

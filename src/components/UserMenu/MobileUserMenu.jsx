@@ -1,12 +1,8 @@
 "use client"
 
 import {
-    BadgeCheck,
-    Bell,
     ChevronsUpDown,
-    CreditCard,
     LogOut,
-    Sparkles,
 } from "lucide-react"
 import { Link } from "react-router-dom"
 
@@ -29,46 +25,51 @@ import {
 import { Button } from "@/components/ui/button"
 import { useTranslation } from "react-i18next"
 import { userMenuItems } from "@/constants/userMenuItems"
+import CircularProgress from "../CircularProgress/CircularProgress"
+import ErrorFetchingData from "../ErrorFetchingData.jsx/ErrorFetchingData"
+import useUserStore from "@/store/useUserStore"
 
-export default function MobileUserMenu({ onLogout }) {
+export default function MobileUserMenu({ onLogout, isLoading, isError, error }) {
     const { t } = useTranslation("userMenuItems");
-
-    const user = {
-        name: "Ansam",
-        email: "ansam@example.com",
-        avatar: "",
-    }
-
-    const handleLogout = () => {
-        console.log("Logout")
-    }
+    const user = useUserStore( (set) => set.user );
 
     return (
         <DropdownMenu>
             {/* Trigger */}
             <DropdownMenuTrigger
                 render={
-                    <Button
-                        className="h-auto w-full justify-start gap-3 p-2 bg-transparent text-foreground
-                         hover:bg-accent hover:text-accent-foreground"
-                    >
-                        <Avatar className="h-10 w-10 circle">
-                            <AvatarFallback className="circle bg-primary text-primary-foreground">
-                                {user.name.slice(0, 2).toUpperCase()}
-                            </AvatarFallback>
-                        </Avatar>
+                    <Button className="h-auto w-full justify-start gap-3 p-2 bg-transparent text-foreground
+                        hover:bg-accent hover:text-accent-foreground">
 
-                        <div className="grid min-w-0 flex-1 text-start text-sm leading-tight">
-                            <span className="truncate font-medium">
-                                {user.name}
-                            </span>
+                        {isLoading && (
+                            <CircularProgress />
+                        )}
 
-                            <span className="truncate text-xs text-muted-foreground">
-                                {user.email}
-                            </span>
-                        </div>
+                        {isError && (
+                            <ErrorFetchingData error={error} />
+                        )}
 
-                        <ChevronsUpDown className="size-4 shrink-0" />
+                        {!isLoading && !isError && user && (
+                            <>
+                                <Avatar className="h-10 w-10 circle">
+                                    <AvatarFallback className="circle bg-primary text-primary-foreground">
+                                        {user.fullName?.slice(0, 2).toUpperCase()}
+                                    </AvatarFallback>
+                                </Avatar>
+
+                                <div className="grid min-w-0 flex-1 text-start text-sm leading-tight">
+                                    <span className="truncate font-medium">
+                                        {user.fullName}
+                                    </span>
+
+                                    <span className="truncate text-xs text-muted-foreground">
+                                        {user.email}
+                                    </span>
+                                </div>
+
+                                <ChevronsUpDown className="size-4 shrink-0" />
+                            </>
+                        )}
                     </Button>
                 }
             />
@@ -83,23 +84,33 @@ export default function MobileUserMenu({ onLogout }) {
                 {/* User info */}
                 <DropdownMenuGroup>
                     <DropdownMenuLabel className="p-0 font-normal">
-                        <div className="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
-                            <Avatar className="h-8 w-8 circle">
-                                <AvatarFallback className="circle bg-primary text-primary-foreground">
-                                    {user.name.slice(0, 2).toUpperCase()}
-                                </AvatarFallback>
-                            </Avatar>
+                        {isLoading && (
+                            <CircularProgress />
+                        )}
 
-                            <div className="grid min-w-0 flex-1 leading-tight">
-                                <span className="truncate font-medium">
-                                    {user.name}
-                                </span>
+                        {isError && (
+                            <ErrorFetchingData error={error} />
+                        )}
 
-                                <span className="truncate text-xs text-muted-foreground">
-                                    {user.email}
-                                </span>
+                        {!isLoading && !isError && user && (
+                            <div className="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
+                                <Avatar className="h-8 w-8 circle">
+                                    <AvatarFallback className="circle bg-primary text-primary-foreground">
+                                        {user.fullName.slice(0, 2).toUpperCase()}
+                                    </AvatarFallback>
+                                </Avatar>
+
+                                <div className="grid min-w-0 flex-1 leading-tight">
+                                    <span className="truncate font-medium">
+                                        {user.fullName}
+                                    </span>
+
+                                    <span className="truncate text-xs text-muted-foreground">
+                                        {user.email}
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </DropdownMenuLabel>
                 </DropdownMenuGroup>
 
