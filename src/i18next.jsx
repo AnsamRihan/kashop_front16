@@ -35,6 +35,12 @@ import arProducts from "./translations/ar/products.json"
 import enPagination from "./translations/en/pagination.json"
 import arPagination from "./translations/ar/pagination.json"
 
+import enFilter from "./translations/en/filter.json"
+import arFilter from "./translations/ar/filter.json"
+
+import enCategories from "./translations/en/categories.json"
+import arCategories from "./translations/ar/categories.json"
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -52,6 +58,8 @@ i18n
                 home: enHome,
                 products: enProducts,
                 pagination: enPagination,
+                filter: enFilter,
+                categories: enCategories,
             },
             ar: {
                 login: arLogin,
@@ -65,6 +73,8 @@ i18n
                 home: arHome,
                 products: arProducts,
                 pagination: arPagination,
+                filter: arFilter,
+                categories: arCategories,
             },
         },
 

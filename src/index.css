@@ -200,6 +200,14 @@
     @apply capitalize circle bg-icon-background py-2 px-6 font-medium text-xs xs:text-sm tracking-[0.14px] hover:text-primary-foreground hover:bg-primary transition-all duration-150 ease-in-out;
 }
 
+@utility pageHeader {
+    @apply capitalize text-heading-foreground font-bold text-3xl xs:text-4xl md:text-5xl tracking-[-0.96px];
+}
+
+@utility pageDescription {
+    @apply text-sm xs:text-base md:text-lg;
+}
+
 @utility loader {
     --loader-color: var(--color-primary);
     --loader-size: 1px;

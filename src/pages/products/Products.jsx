@@ -3,26 +3,14 @@ import ErrorFetchingData from '@/components/ErrorFetchingData.jsx/ErrorFetchingD
 import Pagination from '@/components/Pagination/Pagination'
 import ProductCard from '@/components/ProductCard/ProductCard'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Separator } from '@/components/ui/separator'
 import useProducts from '@/hooks/useProducts'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { productSortOptions } from '@/constants/productSortOptions'
-import { productSortItems } from '@/constants/productSortItems'
+import Filters from '@/components/Products/ProductsFilter'
 
 export default function Products() {
   const { t } = useTranslation("products");
-
-  const items = [
-    { label: "Sort By:", value: null },
-    { label: "Alphabetically, A-Z", value: "az" },
-    { label: "Alphabetically, Z-A", value: "za" },
-    { label: "Price, low to high", value: "priceLowToHigh" },
-    { label: "Price, high to low", value: "priceHighToLow" },
-    { label: "Rate, low to high", value: "rateLowToHigh" },
-    { label: "Rate, high to low", value: "rateHighToLow" },
-  ]
 
   const [sortBy, setSortBy] = useState("az");
   const [page, setPage] = useState(1);
@@ -62,69 +50,21 @@ export default function Products() {
 
           {/*Title */}
           <div className='stack items-start gap-3 w-full'>
-            <h1 className='capitalize text-heading-foreground font-bold text-3xl xs:text-4xl md:text-5xl tracking-[-0.96px]'>
+            <h1 className='pageHeader'>
               {t("shop")}
             </h1>
-            <p className='text-sm xs:text-base md:text-lg'>
+            <p className='pageDescription'>
               {t("description")}
             </p>
           </div>
 
-          <div className='stack gap-3 w-full'>
-            <Separator />
-
-            {/*Filter Area */}
-            <div className='center justify-between w-full'>
-              <p className='text-xs xxs:text-sm'>
-                {!isLoading && !isError && data?.response ? (
-                  <span className='font-bold text-heading-foreground'>
-                    {data.response.totalCount}
-                  </span>
-                ):(
-                  <span className='font-bold text-heading-foreground'>
-                    {t("no")}
-                  </span>
-                )}
-                {" "}{t("productsFound")}
-              </p>
-
-              <div className='row gap-6'>
-
-                <div className='row'>
-                  <span className='capitalize text-xs xxs:text-sm hidden md:block'>
-                    {t("sortBy")}
-                  </span>
-                  <Select value={sortBy} onValueChange={setSortBy}>
-                    <SelectTrigger className="w-48 text-xs xxs:text-sm bg-secondary-background">
-                      <SelectValue>
-                        {t(
-                          productSortItems.find(
-                            (item) => item.value === sortBy
-                          )?.translationKey
-                        )}
-                      </SelectValue>
-                    </SelectTrigger>
-
-                    <SelectContent className="w-48">
-                      <SelectGroup>
-                        {productSortItems.map((item) => (
-                          <SelectItem
-                            key={item.value}
-                            value={item.value}
-                            className="text-xs xxs:text-sm"
-                          >
-                            {t(item.translationKey)}
-                          </SelectItem>
-                        ))}
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </div>
-
-            <Separator />
-          </div>
+          <Filters 
+            totalCount={data?.response?.totalCount ?? 0}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            isLoading={isLoading}
+            isError={isError}
+          />
           
           {isLoading && (
             <CircularProgress />

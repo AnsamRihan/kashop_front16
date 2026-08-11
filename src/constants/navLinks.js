@@ -13,7 +13,7 @@ export const navLinks = [
     },
     {
       key: "categories",
-      path: "#",
+      path: "/categories",
       icon: Shapes ,
     }
   ]
