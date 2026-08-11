@@ -72,7 +72,7 @@ export default function CategoriesFilters({
 
                 {/* Categories sidebar */}
                 <div className="row gap-1 hidden md:block">
-                    <div className="stack items-start gap-4 lg:w-60 md:w-45 pt-3">
+                    <div className="stack items-start gap-4 lg:w-60 md:w-45">
 
                         <div className="row">
                             <ListFilter className="text-primary w-5" />

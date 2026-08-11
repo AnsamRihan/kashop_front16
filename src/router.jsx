@@ -8,6 +8,7 @@ import Login from "./pages/login/Login.jsx";
 import AuthLayout from "./layouts/AuthLayout.jsx";
 import ForgotPaassword from "./pages/forgotPassword/ForgotPassword.jsx";
 import ResetPassword from "./pages/verifyCode/ResetPassword.jsx";
+import ProtectedRouter from "./ProtectedRouter.jsx";
 import Categories from "./pages/Categories/Categories.jsx";
 
 const router = createBrowserRouter([
@@ -24,12 +25,15 @@ const router = createBrowserRouter([
         },
         {
             path: "/cart",
-            element: <Cart />,
+            element: 
+                <ProtectedRouter>
+                    <Cart />
+                </ProtectedRouter>,
         },
         {
             path: "/categories",
             element: <Categories />,
-        } 
+        }
     ]
   },
   {
