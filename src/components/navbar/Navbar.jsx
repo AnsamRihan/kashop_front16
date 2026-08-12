@@ -1,16 +1,11 @@
-import authAxiosInstance from '@/api/authAxiosInstance'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { SideBar } from '../SideBar'
 import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher'
 import ThemeToggle from '../themeToggle/ThemeToggle'
 import Navlink from '../Navlink/Navlink'
 import UserMenu from '../UserMenu/UserMenu'
-import { Button } from '../ui/button'
-import { Search, ShoppingCart } from 'lucide-react'
-import { Badge } from '../ui/badge'
 import useAuthStore from '@/store/useAuthStore'
-import { SearchInput } from '../ui/SearchInput'
 import CartDrawer from '../CartDrawer/CartDrawer'
 
 export default function Navbar() {

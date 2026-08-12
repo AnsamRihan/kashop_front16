@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import useThemeStore from "@/store/useThemeStore";
+import { useEffect } from "react";
 
 export default function useTheme() {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "light"
-  );
+
+  const theme = useThemeStore((state) => state.theme);
+  const setTheme = useThemeStore((state) => state.setTheme);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -11,7 +12,6 @@ export default function useTheme() {
 
   const changeTheme = (newTheme) => {
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
   };
 
   return {
