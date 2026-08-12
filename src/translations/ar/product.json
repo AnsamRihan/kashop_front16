@@ -3,5 +3,13 @@
     "products": "المنتجات",
     "inStock": "متوفر",
     "outOfStock": "غير متوفر",
-    "addToCart" : "أضف إلى السلة"
+    "addToCart" : "أضف إلى السلة",
+    "customerReviews": "تقييمات العملاء",
+    "verified": "موّثق",
+    "shareYourExperience": "شارك تجربتك",
+    "howWasYourProduct": "كيف كانت تجربتك مع المنتج؟ رأيك يساعد مجتمعنا.",
+    "writeYourReviewHere": "اكتب تقييمك هنا...",
+    "submitReview": "إرسال التقييم",
+    "submitting": "جاري الإرسال...",
+    "loadMoreReviews": "تحميل المزيد من التقييمات"
 }

@@ -3,5 +3,13 @@
     "products": "Products",
     "inStock": "In Stock",
     "outOfStock": "Out of Stock",
-    "addToCart" : "Add to Cart"
+    "addToCart" : "Add to Cart",
+    "customerReviews": "Customer Reviews",
+    "verified": "Verified",
+    "shareYourExperience": "Share your experience",
+    "howWasYourProduct": "How was your product? Your feedback helps the community.",
+    "writeYourReviewHere": "Write your review here...",
+    "submitReview": "Submit Review",
+    "submitting": "Submitting...",
+    "loadMoreReviews": "Load More Reviews"
 }
