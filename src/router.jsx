@@ -11,6 +11,11 @@ import ResetPassword from "./pages/verifyCode/ResetPassword.jsx";
 import ProtectedRouter from "./ProtectedRouter.jsx";
 import Categories from "./pages/Categories/Categories.jsx";
 import Product from "./pages/Product/Product.jsx";
+import Checkout from "./pages/Checkout/Checkout.jsx";
+import OrderSuccess from "./pages/OrderSuccess/OrderSuccess.jsx";
+import ProfileLayout from "./layouts/ProfileLayout.jsx";
+import ProfileInfo from "./pages/Profile/ProfileInfo.jsx";
+import OrdersInfo from "./pages/Profile/OrdersInfo.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +41,37 @@ const router = createBrowserRouter([
                 </ProtectedRouter>,
         },
         {
+            path: "/order-success",
+            element: 
+                <ProtectedRouter>
+                    <OrderSuccess />
+                </ProtectedRouter>,
+        },
+        {
+            path: "/checkout",
+            element: 
+                <ProtectedRouter>
+                    <Checkout />
+                </ProtectedRouter>,
+        },
+        {
             path: "/categories",
             element: <Categories />,
+        },{
+            path: "/profile",
+            element:
+                <ProtectedRouter>
+                    <ProfileLayout />
+                </ProtectedRouter>,
+            children:[
+                {
+                    index: true,
+                    element: <ProfileInfo />
+                },{
+                    path:"orders",
+                    element:<OrdersInfo />
+                }
+            ]
         }
     ]
   },

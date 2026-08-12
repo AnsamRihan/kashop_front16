@@ -50,6 +50,15 @@ import arCart from "./translations/ar/cart.json"
 import enCartItem from "./translations/en/cartItem.json"
 import arCartItem from "./translations/ar/cartItem.json"
 
+import enCheckout from "./translations/en/checkout.json"
+import arCheckout from "./translations/ar/checkout.json"
+
+import enOrderSuccess from "./translations/en/orderSuccess.json"
+import arOrderSuccess from "./translations/ar/orderSuccess.json"
+
+import enProfileLayout from "./translations/en/profileLayout.json"
+import arProfileLayout from "./translations/ar/profileLayout.json"
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -72,6 +81,9 @@ i18n
                 product: enProduct,
                 cart: enCart,
                 cartItem: enCartItem,
+                checkout: enCheckout,
+                orderSuccess: enOrderSuccess,
+                profileLayout: enProfileLayout,
             },
             ar: {
                 login: arLogin,
@@ -90,6 +102,9 @@ i18n
                 product: arProduct,
                 cart: arCart,
                 cartItem: arCartItem,
+                checkout: arCheckout,
+                orderSuccess: arOrderSuccess,
+                profileLayout: arProfileLayout,
             },
         },
 

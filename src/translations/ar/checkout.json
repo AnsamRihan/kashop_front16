@@ -1,0 +1,13 @@
+{
+  "home": "الرئيسية",
+  "cart": "السلة",
+  "checkout": "إتمام الطلب",
+  "paymentMethod": "طريقة الدفع",
+  "creditDebitCard": "بطاقة ائتمانية / خصم",
+  "cashOnDelivery": "الدفع عند الاستلام",
+  "orderSummary": "ملخص الطلب",
+  "total": "المجموع",
+  "placeOrder": "تأكيد الطلب",
+  "QTY": "العدد",
+  "processing": "جارٍ المعالجة..."
+}

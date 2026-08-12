@@ -1,0 +1,13 @@
+{
+  "home": "Home",
+  "cart": "Cart",
+  "checkout": "Checkout",
+  "paymentMethod": "Payment Method",
+  "creditDebitCard": "Credit / Debit Card",
+  "cashOnDelivery": "Cash on Delivery",
+  "orderSummary": "Order Summary",
+  "total": "Total",
+  "placeOrder": "Place Order",
+  "QTY": "QTY",
+  "processing": "Processing..."
+}

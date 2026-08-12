@@ -8,7 +8,7 @@ import { Trash } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody } from '@/components/ui/table';
 import CartItem from '@/components/CartDrawer/CartItem';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useClearCart from '@/hooks/useClearCart';
 import {
   AlertDialog,
@@ -23,6 +23,7 @@ import {
 import { toast } from "sonner";
 
 export default function Cart() {
+  const navigate = useNavigate();
   const { t } = useTranslation("cart")
 
   const { data, isLoading, isError, error } = useCart();
@@ -133,7 +134,8 @@ export default function Cart() {
                     ${data?.cartTotal.toFixed(2)}
                   </span>
                 </div>
-                <Button className="w-full">
+                <Button className="w-full" onClick={() => navigate("/checkout")}
+                  disabled={cartCount === 0}>
                   {t("checkOut")}
                 </Button>
                 <Link to="/shop" className='w-full'>

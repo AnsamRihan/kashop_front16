@@ -14,7 +14,7 @@ import { ShoppingCart, X } from 'lucide-react';
 import { Badge } from '../ui/badge';
 import CircularProgress from '../CircularProgress/CircularProgress';
 import ErrorFetchingData from '../ErrorFetchingData.jsx/ErrorFetchingData';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CartItem from './CartItem';
 import { Table, TableBody } from '../ui/table';
 
@@ -25,7 +25,8 @@ export default function CartDrawer() {
 
     const { data, isLoading, isError, error} = useCart();
     
-    const cartCount = data?.items.length || 0;
+    const cartCount = data?.items.length ?? 0;
+    const navigate = useNavigate();
 
     return (
         <Drawer swipeDirection={direction}>
@@ -82,7 +83,8 @@ export default function CartDrawer() {
                                     ${data?.cartTotal.toFixed(2)}
                                 </span>
                             </div>
-                            <Button className="w-full">
+                            <Button className="w-full" onClick={() => navigate("/checkout")}
+                            disabled={cartCount === 0}>
                                 {t("checkOut")}
                             </Button>
                             <Link to="/cart" className='w-full'>
