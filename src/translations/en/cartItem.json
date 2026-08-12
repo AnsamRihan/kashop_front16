@@ -1,0 +1,10 @@
+{
+  "areYouSure": "Are you sure?",
+  "removeCartItemDescription": "Are you sure you want to remove this item from your cart? This action cannot be undone.",
+  "cancel": "Cancel",
+  "removing": "Removing...",
+  "remove": "Remove",
+  "itemRemovedFromCart": "Item removed from cart",
+  "failedToRemoveItemFromCart": "Failed to remove item from cart",
+  "total": "Total"
+}

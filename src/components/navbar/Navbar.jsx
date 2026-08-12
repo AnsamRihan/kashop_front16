@@ -11,6 +11,7 @@ import { Search, ShoppingCart } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import useAuthStore from '@/store/useAuthStore'
 import { SearchInput } from '../ui/SearchInput'
+import CartDrawer from '../CartDrawer/CartDrawer'
 
 export default function Navbar() {
 
@@ -51,13 +52,7 @@ export default function Navbar() {
 
             {/*Cart */}
             {isLoggedIn ? (
-              <Button variant="ghost" className="relative p-0 group">
-                <ShoppingCart className="size-4 xxs:size-5 group-hover:text-primary"/>
-
-                <Badge className="absolute -right-2 -top-1 size-4 rounded-full p-1 text-[7.5px] font-semibold">
-                  20
-                </Badge>
-              </Button>
+              <CartDrawer />
             ) : null}
 
             {/*Profile */}

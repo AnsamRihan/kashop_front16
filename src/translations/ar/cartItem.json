@@ -1,0 +1,10 @@
+{
+  "areYouSure": "هل أنت متأكد؟",
+  "removeCartItemDescription": "هل أنت متأكد أنك تريد إزالة هذا المنتج من سلة التسوق؟ لا يمكن التراجع عن هذا الإجراء.",
+  "cancel": "إلغاء",
+  "removing": "جارٍ الإزالة...",
+  "remove": "إزالة",
+  "itemRemovedFromCart": "تمت إزالة المنتج من سلة التسوق",
+  "failedToRemoveItemFromCart": "فشل في إزالة المنتج من سلة التسوق",
+  "total": "المجموع"
+}

@@ -6,6 +6,9 @@ export default function QuantitySelector({
     onQuantityChange,
     min = 1,
     max = 99,
+    textClassName="text-sm",
+    iconSize="size-4",
+    size="size-9"
 }) {
     const decrease = () => {
         onQuantityChange(Math.max(min, quantity - 1));
@@ -26,10 +29,10 @@ export default function QuantitySelector({
                 disabled={quantity <= min}
                 aria-label="Decrease quantity"
             >
-                <Minus className="size-4" />
+                <Minus className={iconSize} />
             </Button>
 
-            <span className="flex size-9 items-center justify-center text-sm font-medium tabular-nums">
+            <span className={`flex ${size} items-center justify-center ${textClassName} font-medium tabular-nums`}>
                 {quantity}
             </span>
 
@@ -42,7 +45,7 @@ export default function QuantitySelector({
                 disabled={quantity >= max}
                 aria-label="Increase quantity"
             >
-                <Plus className="size-4" />
+                <Plus className={iconSize} />
             </Button>
         </div>
     );

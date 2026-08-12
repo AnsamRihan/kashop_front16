@@ -44,6 +44,12 @@ import arCategories from "./translations/ar/categories.json"
 import enProduct from "./translations/en/product.json"
 import arProduct from "./translations/ar/product.json"
 
+import enCart from "./translations/en/cart.json"
+import arCart from "./translations/ar/cart.json"
+
+import enCartItem from "./translations/en/cartItem.json"
+import arCartItem from "./translations/ar/cartItem.json"
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -64,6 +70,8 @@ i18n
                 filter: enFilter,
                 categories: enCategories,
                 product: enProduct,
+                cart: enCart,
+                cartItem: enCartItem,
             },
             ar: {
                 login: arLogin,
@@ -80,6 +88,8 @@ i18n
                 filter: arFilter,
                 categories: arCategories,
                 product: arProduct,
+                cart: arCart,
+                cartItem: arCartItem,
             },
         },
 

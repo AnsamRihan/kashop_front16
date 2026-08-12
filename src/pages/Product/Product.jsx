@@ -4,6 +4,7 @@ import QuantitySelector from '@/components/QuantitySelector/QuantitySelector';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import useAddToCart from '@/hooks/useAddToCart';
 import usePostReview from '@/hooks/usePostReview';
 import useProduct from '@/hooks/useProduct';
 import { BadgeCheck, ShoppingCart, Star } from 'lucide-react';
@@ -14,6 +15,7 @@ import { toast } from "sonner";
 
 export default function Product() {
 
+    const { mutate: addToCart } = useAddToCart();
     const { t } = useTranslation("product");
 
     const { id } = useParams();
@@ -197,7 +199,29 @@ export default function Product() {
                                     }
                                 />
 
-                                <Button className="row w-full flex-1 flex-wrap" disabled={!buttonEnables}>
+                                <Button className="row w-full flex-1 flex-wrap" disabled={!buttonEnables}
+                                onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+        
+                                        addToCart(
+                                            {
+                                                ProductId: productID,
+                                                Count: quantity
+                                            },
+                                            {
+                                                onSuccess: () => {
+                                                    toast.success("Product added to cart");
+                                                },
+                                                onError: (error) => {
+                                                    toast.error(
+                                                        error.response?.data?.message ||
+                                                        "Failed to add product to cart"
+                                                    );
+                                                },
+                                            }
+                                        );
+                                    }}>
                                     <ShoppingCart className='size-5' />
                                     {t("addToCart")}
                                 </Button>
