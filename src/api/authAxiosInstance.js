@@ -1,7 +1,8 @@
 import i18n from '@/i18next';
+import useAuthStore from '@/store/useAuthStore';
 import axios from 'axios';
 
-const token = localStorage.getItem("accessToken");
+const token = useAuthStore.getState().token;
 
 const authAxiosInstance = axios.create({
   baseURL: `${import.meta.env.VITE_BURL}`,

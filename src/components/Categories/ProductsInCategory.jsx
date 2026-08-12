@@ -3,8 +3,11 @@ import React from 'react'
 import CircularProgress from '../CircularProgress/CircularProgress';
 import ErrorFetchingData from '../ErrorFetchingData.jsx/ErrorFetchingData';
 import ProductCard from '../ProductCard/ProductCard';
+import { useTranslation } from 'react-i18next';
 
 export default function ProductsInCategory({ categoryID }) {
+
+    const { t } = useTranslation("categories");
 
     const {data, isLoading, isError, error} = useProductsByCategory({
         categoryID
@@ -27,7 +30,7 @@ export default function ProductsInCategory({ categoryID }) {
         {!isError && !isLoading && (
             data?.response?.length === 0 ? (
                 <div className='h-full w-full center text-heading-foreground font-semibold'>
-                    No products in this category
+                    {t('noProductsInCategory')}
                 </div>
             ) : (
                 <div className='grid grid-cols-1 xxs:grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6'>

@@ -10,6 +10,7 @@ import ForgotPaassword from "./pages/forgotPassword/ForgotPassword.jsx";
 import ResetPassword from "./pages/verifyCode/ResetPassword.jsx";
 import ProtectedRouter from "./ProtectedRouter.jsx";
 import Categories from "./pages/Categories/Categories.jsx";
+import Product from "./pages/Product/Product.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         {
             path: "/shop",
             element: <Products />,
+        },
+        {
+            path: "/product/:id",
+            element: <Product />,
         },
         {
             path: "/cart",
