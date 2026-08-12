@@ -1,9 +1,17 @@
 {
-    "shoppingCart" : "Shopping Cart",
+    "shoppingCart": "Shopping Cart",
     "subtotal": "Subtotal",
     "checkOut": "Check Out",
     "viewShoppingCart": "View Shopping Cart",
     "home": "Home",
     "itemsInYourCart": "items in your cart",
-    "clearCart": "Clear Cart"
+    "continueShopping": "Countinue Shopping",
+    "clearCart": "Clear Cart",
+    "cartCleared": "Cart cleared successfully",
+    "failedToClearCart": "Failed to clear cart",
+    "areYouSure": "Are you sure?",
+    "clearCartDescription": "Are you sure you want to remove all items from your cart? This action cannot be undone.",
+    "cancel": "Cancel",
+    "clearing": "Clearing...",
+    "noItemsInCart": "There are no items in your cart."
 }

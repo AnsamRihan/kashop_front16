@@ -5,5 +5,13 @@
   "viewShoppingCart": "عرض سلة التسوق",
   "home": "الرئيسية",
   "itemsInYourCart": "المنتجات الموجودة في سلة التسوق الخاصة بك",
-  "clearCart": "إفراغ السلة"
+  "continueShopping": "متابعة التسوق",
+  "clearCart": "إفراغ السلة",
+  "cartCleared": "تم إفراغ السلة بنجاح",
+  "failedToClearCart": "فشل إفراغ السلة",
+  "areYouSure": "هل أنت متأكد؟",
+  "clearCartDescription": "هل أنت متأكد أنك تريد إزالة جميع المنتجات من سلة التسوق؟ لا يمكن التراجع عن هذا الإجراء.",
+  "cancel": "إلغاء",
+  "clearing": "جارٍ إفراغ السلة...",
+  "noItemsInCart": "لا توجد منتجات في سلة التسوق."
 }
