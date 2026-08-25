@@ -17,7 +17,7 @@ import { Button } from '@/components/ui/button';
 
 export default function OrdersInfo() {
 
-  const { t } = useTranslation("");
+  const { t } = useTranslation("orders");
 
   const { data, isLoading, isError, error } = useProfile();
   const [numberOfOrders, setNumberOfOrders] = useState(20);
@@ -46,11 +46,11 @@ export default function OrdersInfo() {
           <Table className='text-center'>
             <TableHeader>
               <TableRow>
-                <TableHead className='text-center font-semibold'>Order ID</TableHead>
-                <TableHead className='text-center font-semibold w-60'>Date</TableHead>
-                <TableHead className='text-center font-semibold'>Amount</TableHead>
-                <TableHead className='text-center font-semibold'>Status</TableHead>
-                <TableHead className='text-center font-semibold'>Payment</TableHead>
+                <TableHead className='text-center font-semibold'>{t("orderId")}</TableHead>
+                <TableHead className='text-center font-semibold w-60'>{t("date")}</TableHead>
+                <TableHead className='text-center font-semibold'>{t("amount")}</TableHead>
+                <TableHead className='text-center font-semibold'>{t("status")}</TableHead>
+                <TableHead className='text-center font-semibold'>{t("payment")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -71,7 +71,7 @@ export default function OrdersInfo() {
                     {order.status}
                   </TableCell>
                   <TableCell className='text-primary font-medium'>
-                    {order.paymentStatus === null ? "Pending" : order.paymentStatus}
+                    {order.paymentStatus === null ? t("pending") : order.paymentStatus}
                   </TableCell>
                 </TableRow>
               ))}

@@ -1,0 +1,10 @@
+{
+  "myOrders": "My Orders",
+  "orderId": "Order ID",
+  "date": "Date",
+  "amount": "Amount",
+  "status": "Status",
+  "payment": "Payment",
+  "pending": "Pending",
+  "loadMoreOrders": "Load More Orders"
+}
