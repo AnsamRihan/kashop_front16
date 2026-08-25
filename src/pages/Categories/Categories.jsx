@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -8,6 +8,8 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { useTranslation } from "react-i18next";
+import { Link, useSearchParams } from "react-router-dom";
+
 import useCategories from "@/hooks/useCategories";
 import CircularProgress from "@/components/CircularProgress/CircularProgress";
 import ErrorFetchingData from "@/components/ErrorFetchingData.jsx/ErrorFetchingData";
@@ -19,39 +21,55 @@ export default function Categories() {
 
     const limit = 8;
 
-    const [categoryID, setCategoryID] = useState(() => {
-        const saved = localStorage.getItem("selectedCategory");
+    // URL is now the source of truth
+    const [searchParams, setSearchParams] = useSearchParams();
 
-        return saved ? Number(saved) : -1;
-    });
+    const categoryID = Number(searchParams.get("category")) || -1;
 
     const { data, isLoading, isError, error } = useCategories({
         limit,
     });
 
-    useEffect(() => {
-        if (categoryID !== -1) {
-            localStorage.setItem("selectedCategory", String(categoryID));
-        }
-    }, [categoryID]);
+    const categories = data?.response?.data || [];
 
+    // Find selected category
+    const categoryName = categories.find(
+        (category) => category.id === categoryID
+    )?.name;
+
+    /*
+        If There is no category in the URL
+        OR
+        The category in the URL doesn't exist
+        Select the first category.
+    */
     useEffect(() => {
-        if (!isLoading && !isError && data?.response?.data?.length) {
-            const categories = data.response.data;
+        if (!isLoading && !isError && categories.length > 0) {
 
             const categoryExists = categories.some(
                 (category) => category.id === categoryID
             );
 
             if (!categoryExists) {
-                setCategoryID(categories[0].id);
+                setSearchParams({
+                    category: String(categories[0].id),
+                });
             }
         }
-    }, [data, isLoading, isError, categoryID]);
+    }, [
+        categories,
+        categoryID,
+        isLoading,
+        isError,
+        setSearchParams,
+    ]);
 
-    const categoryName = data?.response?.data?.find(
-        (category) => category.id === categoryID
-    )?.name;
+    // Called when user selects another category
+    const handleCategoryChange = (id) => {
+        setSearchParams({
+            category: String(id),
+        });
+    };
 
     return (
         <section className="py-8">
@@ -63,8 +81,10 @@ export default function Categories() {
                         <BreadcrumbList>
 
                             <BreadcrumbItem>
-                                <BreadcrumbLink href="/">
-                                    {t("home")}
+                                <BreadcrumbLink asChild>
+                                    <Link to="/">
+                                        {t("home")}
+                                    </Link>
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
 
@@ -79,8 +99,10 @@ export default function Categories() {
                         </BreadcrumbList>
                     </Breadcrumb>
 
+
                     {/* Title */}
                     <div className="stack items-start gap-3 w-full">
+
                         <h1 className="pageHeader">
                             {t("categories")}
                         </h1>
@@ -88,30 +110,40 @@ export default function Categories() {
                         <p className="pageDescription">
                             {t("description")}
                         </p>
+
                     </div>
 
+
                     {/* Loading */}
-                    {isLoading && <CircularProgress />}
+                    {isLoading && (
+                        <CircularProgress />
+                    )}
+
 
                     {/* Error */}
-                    {isError && <ErrorFetchingData error={error} />}
+                    {isError && (
+                        <ErrorFetchingData error={error} />
+                    )}
+
 
                     {/* Content */}
                     {!isLoading && !isError && (
-                        /* Mobile category + sort */
                         <CategoriesFilters
                             categoryName={
                                 categoryID === -1
                                     ? "No Category"
                                     : categoryName
                             }
-                            categories={data?.response?.data}
+                            categories={categories}
                             categoryID={categoryID}
-                            setCategoryID={setCategoryID}
+                            setCategoryID={handleCategoryChange}
                         >
-                            <ProductsInCategory categoryID={categoryID} />
+                            <ProductsInCategory
+                                categoryID={categoryID}
+                            />
                         </CategoriesFilters>
                     )}
+
                 </div>
             </div>
         </section>
