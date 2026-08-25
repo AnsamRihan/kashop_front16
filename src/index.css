@@ -176,11 +176,20 @@
 }
 
 @utility sidebar-link {
-    @apply capitalize row gap-4 px-4 py-3 rounded-[12px] hover:text-primary dark:hover:text-white hover:bg-sidebar-navlink-background;
+  @apply capitalize row gap-4 px-4 py-3 rounded-[12px] hover:text-primary dark:hover:text-white hover:bg-sidebar-navlink-background;
+
+  &.active {
+    @apply text-primary dark:text-white bg-sidebar-navlink-background;
+  }
 }
 
 @utility nav-link {
-    @apply capitalize hover:text-primary font-medium text-sm tracking-[0.14px] hover:underline hover:decoration-2 hover:underline-offset-8 transition-all duration-200 ease-in-out;
+  @apply capitalize font-medium text-sm tracking-[0.14px] transition-all duration-200 ease-in-out;
+
+  &:hover,
+  &.active {
+    @apply text-primary underline decoration-2 underline-offset-8;
+  }
 }
 
 @utility footer-link {
