@@ -1,19 +1,23 @@
 import { create } from "zustand";
 
-const useAuthStore = create( (set) => ({
-    token: localStorage.getItem('accessToken'),
+const useAuthStore = create((set) => ({
+    token: localStorage.getItem("accessToken"),
+
     setToken: (newToken) => {
+        localStorage.setItem("accessToken", newToken);
+
         set({
-            token: newToken
+            token: newToken,
         });
-        localStorage.setItem('accessToken', newToken);
     },
-    logout: () =>{
+
+    logout: () => {
+        localStorage.removeItem("accessToken");
+
         set({
-            token: null
+            token: null,
         });
-        localStorage.removeItem('accessToken');
-    }
+    },
 }));
 
 export default useAuthStore;

@@ -21,11 +21,13 @@ import { TriangleAlert } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import useAuthStore from "@/store/useAuthStore"
+import { useQueryClient } from "@tanstack/react-query"
 
 export function LoginForm({className, ...props}) {
   const setToken = useAuthStore((state) => state.setToken);
 
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [loginError, setLoginError] = useState("");
   const {register, handleSubmit} = useForm();
   const {t} = useTranslation("login");
@@ -40,6 +42,14 @@ export function LoginForm({className, ...props}) {
       onSuccess: (response) => {
         if (response.data.success) {
           setToken(response.data.accessToken);
+          // Remove any previous unauthenticated query state
+          queryClient.removeQueries({
+              queryKey: ["Profile"],
+          });
+
+          queryClient.removeQueries({
+              queryKey: ["cart"],
+          });
           navigate("/");
         }
       },

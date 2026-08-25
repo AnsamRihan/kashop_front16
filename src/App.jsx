@@ -5,15 +5,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './i18next.jsx'
 import { broadcastQueryClient } from "@tanstack/query-broadcast-client-experimental";
 
-export default function App() {
-  // Create a client
-  const queryClient = new QueryClient();
-  
-  broadcastQueryClient({
-      queryClient,
-      broadcastChannel: "my-app",
-  });
+// Create a client
+const queryClient = new QueryClient();
+broadcastQueryClient({
+    queryClient,
+    broadcastChannel: "my-app",
+});
 
+export default function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
