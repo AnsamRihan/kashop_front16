@@ -6,7 +6,7 @@ import useUserStore from '@/store/useUserStore';
 import { FingerprintPattern, Folders } from 'lucide-react';
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 export default function ProfileLayout() {
     const { t } = useTranslation("profileLayout");
@@ -15,7 +15,7 @@ export default function ProfileLayout() {
 
     return (
         <>
-            <section className='p-10'>
+            <div className='py-10'>
                 <div className="container">
                     <div className='w-full grid grid-cols-1 md:grid-cols-[1.75fr_4fr] lg:grid-cols-[1.5fr_4fr] xl:grid-cols-[1.35fr_4fr] 2xl:grid-cols-[1.25fr_4fr] gap-6'>
                         <div className='stack gap-1 w-full rounded-lg bg-secondary-background p-3 h-fit'>
@@ -51,23 +51,35 @@ export default function ProfileLayout() {
                                 )}
                             </div>
 
-                            <Link to="" className='w-full px-4 py-2 rounded-lg hover:bg-primary hover:text-primary-foreground
-                            row transition-all duration-150 ease-in-out text-sm lg:text-base'>
-                                <FingerprintPattern className='size-4 lg:size-5' />
+                            <NavLink to="" end
+                                className={({ isActive }) =>
+                                    `w-full px-4 py-2 rounded-lg row transition-all duration-150 ease-in-out text-sm lg:text-base
+                                    ${isActive
+                                        ? "bg-primary text-primary-foreground"
+                                        : "hover:bg-primary hover:text-primary-foreground"
+                                    }`
+                                } >
+                                <FingerprintPattern className="size-4 lg:size-5" />
                                 {t("profile")}
-                            </Link>
+                            </NavLink>
 
-                            <Link to="orders" className='w-full px-4 py-2 rounded-lg hover:bg-primary hover:text-primary-foreground
-                            row transition-all duration-150 ease-in-out text-sm lg:text-base'>
-                                <Folders className='size-4 lg:size-5' />
+                            <NavLink to="orders"
+                                className={({ isActive }) =>
+                                    `w-full px-4 py-2 rounded-lg row transition-all duration-150 ease-in-out text-sm lg:text-base
+                                    ${isActive
+                                        ? "bg-primary text-primary-foreground"
+                                        : "hover:bg-primary hover:text-primary-foreground"
+                                    }`
+                                } >
+                                <Folders className="size-4 lg:size-5" />
                                 {t("myOrders")}
-                            </Link>
+                            </NavLink>
                         </div>
 
                         <Outlet />
                     </div>
                 </div>
-            </section>
+            </div>
         </>
     )
 }

@@ -1,7 +1,7 @@
 import CircularProgress from '@/components/CircularProgress/CircularProgress';
 import ErrorFetchingData from '@/components/ErrorFetchingData.jsx/ErrorFetchingData';
 import { Button } from '@/components/ui/button';
-import { Field, FieldError, FieldLabel } from '@/components/ui/field';
+import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import useProfile from '@/hooks/useProfile';
 import useUpdateEmail from '@/hooks/useUpdateEmail';
@@ -13,12 +13,17 @@ import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner';
 import useUpdatePassword from '@/hooks/useUpdatePassword';
 import { updatePasswordSchema } from '@/validations/updatePasswordSchema';
+import { Separator } from '@/components/ui/separator';
+import useUserStore from '@/store/useUserStore';
 
 export default function ProfileInfo() {
     const { t } = useTranslation();
 
     const { data, isLoading, isError, error } = useProfile();
-    const { mutate: updateEmail, isPending: isUpdatingEmail } = useUpdateEmail();
+
+    //-----------------------------------------------------------
+
+    const { mutate: updateEmail, isPending: isPendingEmail } = useUpdateEmail();
 
     const { register, handleSubmit, formState: { errors } } = useForm(
         {
@@ -28,27 +33,30 @@ export default function ProfileInfo() {
     );
 
     const onSubmit = (formData) => {
-        updateEmail(
-            {
-                NewEmail: formData.email,
-            }, {
-            onSuccess: () => {
-                toast.success("Email updated successfully!");
-            }, onError: (error) => {
-                toast.error(
-                    error.response?.data?.message ||
-                    "Failed to update email."
-                );
-            },
-        }
-        );
+        if(formData.email !== data?.email){
+            updateEmail(
+                {
+                    NewEmail: formData.email,
+                }, {
+                onSuccess: () => {
+                        toast.success("Email updated successfully!");
+                    }, onError: (error) => {
+                        toast.error(
+                            error.response?.data?.message ||
+                            "Failed to update email."
+                        );
+                    },
+                }
+            );
+        }else{
+            toast.error("This is the email you currently use!")
+        } 
     };
 
     //-----------------------------------------------
-    
 
-    const { mutate: updatePassword, isPending: isUpdatingPassword } =
-        useUpdatePassword();
+
+    const { mutate: updatePassword, isPending: isUpdatingPassword } = useUpdatePassword();
 
     const { register: registerPassword, handleSubmit: handlePasswordSubmit,
         reset: resetPassword, formState: { errors: passwordErrors } } = useForm({
@@ -79,168 +87,112 @@ export default function ProfileInfo() {
         );
     };
 
+    //------------------------------------------
+    if (isLoading) {
+        return <CircularProgress />
+    }
+
+    if (isError) {
+        return <ErrorFetchingData error={error} />
+    }
+
+    if(!isLoading && !isError){
+        console.log(data);
+    }
+
+    const [firstName, ...lastNameParts] = data?.fullName?.trim().split(/\s+/) || [];
+    const lastName = lastNameParts.join(" ");
+
     return (
-        <div className='stack items-start gap-6 pb-6'>
+        <div className='stack items-start gap-5'>
+            <h1 className='capitalize text-xl font-semibold text-heading-foreground'>
+                Settings
+            </h1>
+
             {/*Personal Info */}
-            <div className='w-full p-6 bg-tertiary-background rounded-lg border border-background-border
-            stack items-start gap-6'>
-                {isLoading && (
-                    <CircularProgress />
-                )}
-
-                {isError && (
-                    <ErrorFetchingData error={error} />
-                )}
-
-                {!isLoading && !isError && (
-                    <>
-                        <h2 className='text-primary font-semibold text-2xl xs:text-3xl tracking-[-0.32px] break-all'>
-                            {t("personalInformation")}
-                        </h2>
-
-                        <div className='row justify-start gap-y-5 gap-x-8 sm:gap-x-15 flex-wrap'>
-                            <div className='stack items-start gap-1'>
-                                <h3 className='uppercase font-medium text-xs xs:text-sm tracking-[0.14px]'>
-                                    {t("fullName")}
-                                </h3>
-                                <span className='text-heading-foreground text-base xs:text-lg break-all'>
-                                    {data?.fullName}
-                                </span>
-                            </div>
-
-                            <div className='stack items-start gap-1'>
-                                <h3 className='uppercase font-medium text-xs xs:text-sm tracking-[0.14px]'>
-                                    {t("email")}
-                                </h3>
-                                <span className='capitalize text-heading-foreground text-base xs:text-lg break-all'>
-                                    {data?.email}
-                                </span>
-                            </div>
-
-                            <div className='stack items-start gap-1'>
-                                <h3 className='uppercase font-medium text-xs xs:text-sm tracking-[0.14px]'>
-                                    {t("phoneNumber")}
-                                </h3>
-                                <span className='capitalize text-heading-foreground text-base xs:text-lg break-all'>
-                                    {data?.phoneNumber}
-                                </span>
-                            </div>
-
-                            <div className='stack items-start gap-1'>
-                                <h3 className='uppercase font-medium text-xs xs:text-sm tracking-[0.14px]'>
-                                    {t("city")}
-                                </h3>
-                                <span className='capitalize text-heading-foreground text-base xs:text-lg break-all'>
-                                    {data?.city === null ? t("unknown") : data?.city}
-                                </span>
-                            </div>
-                        </div>
-                    </>
-                )}
-            </div>
-
-            {/*Update Email */}
-            <div className='w-full p-6 bg-tertiary-background rounded-lg border border-background-border
-            stack items-end gap-6'>
-                <h2 className='w-full flex justify-start text-primary font-semibold text-2xl xs:text-3xl tracking-[-0.32px] break-all'>
-                    {t("emailManagement")}
-                </h2>
-
-                <div className='w-full sm:row sm:gap-6 sm:items-end stack gap-4 '>
-                    <Field>
-                        <FieldLabel htmlFor="email" data-invalid={!!errors.email}>
-                            {t("newEmail")}
-                        </FieldLabel>
-                        <Input id="email" {...register("email")} type="email" placeholder="new.email@example.com"
-                            aria-invalid={!!errors.email} className='h-11' />
-                        {errors.email && (
-                            <FieldError>
-                                {errors.email.message}
-                            </FieldError>
-                        )}
-                    </Field>
-
-                    <Button type="button" className='w-full sm:w-fit' disabled={isUpdatingEmail}
-                        onClick={handleSubmit(
-                            onSubmit,
-                            (errors) => {
-                                console.log("Validation errors:", errors);
-                            }
-                        )}>
-                        {isUpdatingEmail ? t("updating") : t("updateEmail")}
-                    </Button>
+            <section className='stack items-start gap-4 w-full'>
+                {/*Title */}
+                <div className='stack items-start gap-0.5'>
+                    <h2 className='text-heading-foreground font-semibold capitalize'>
+                        personal info
+                    </h2>
+                    <p className='text-sm'>
+                        Update your photo and personal details here.
+                    </p>
                 </div>
-            </div>
+                <Separator />
 
-            {/*Update Password */}
-            <div className='w-full p-6 bg-tertiary-background rounded-lg border border-background-border
-            stack items-end gap-6'>
-                <h2 className='w-full flex justify-start text-primary font-semibold text-2xl xs:text-3xl tracking-[-0.32px]'>
-                    {t("passwordManagement")}
-                </h2>
+                <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
+                    <FieldGroup className='gap-4'>
+                        <Field>
+                            <div className='md:grid grid-cols-1 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
+                                <FieldLabel htmlFor="firstName" className=" hidden md:flex">Name</FieldLabel>
 
-                <div className='w-full stack gap-4'>
+                                <div className='grid grid-cols-1 md:grid-cols-2 gap-6 w-full'>
+                                    <div className='stack gap-1.5 items-start w-full'>
+                                        <FieldLabel htmlFor="firstName" className="md:hidden">First Name <span className="text-red-500">*</span> </FieldLabel>
+                                        <Input id="firstName" type="text" placeholder="First Name" value={firstName}/>
+                                    </div>
+                                    <div className='stack gap-1.5 items-start w-full'>
+                                        <FieldLabel htmlFor="lastName" className="md:hidden">Last Name <span className="text-red-500">*</span> </FieldLabel>
+                                        <Input id="lastName" type="text" placeholder="Last Name" value={lastName} />
+                                    </div>
+                                </div>
+                            </div>
+                        </Field>
 
-                    <Field>
-                        <FieldLabel htmlFor="currentPassword" data-invalid={!!passwordErrors.currentPassword}>
-                            {t("currentPassword")}
-                        </FieldLabel>
+                        <Separator />
 
-                        <Input id="currentPassword" {...registerPassword("currentPassword")}
-                            type="password" placeholder="Current password" aria-invalid={!!passwordErrors.currentPassword}
-                            className='h-11'/>
+                        <Field>
+                            <div className='grid grid-cols-1 gap-1.5 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
+                                <FieldLabel htmlFor="email" data-invalid={!!errors.email}>
+                                    Email <span className="text-red-500">*</span> 
+                                </FieldLabel>
+                                <div className='stack items-start gap-1.5 w-full'>
+                                    <Input id="email" type="text" {...register("email")} placeholder="Email" defaultValue={data?.email} aria-invalid={!!errors.email}/>
+                                    {errors.email && (
+                                        <FieldError>
+                                            {errors.email.message}
+                                        </FieldError>
+                                    )}
+                                </div>
+                            </div>
+                        </Field>
 
-                        {passwordErrors.currentPassword && (
-                            <FieldError>
-                                {passwordErrors.currentPassword.message}
-                            </FieldError>
-                        )}
-                    </Field>
+                        <Separator />
 
-                    <Field>
-                        <FieldLabel htmlFor="newPassword" data-invalid={!!passwordErrors.newPassword} >
-                            {t("newPassword")}
-                        </FieldLabel>
+                        <Field>
+                            <div className='grid grid-cols-1 gap-1.5 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
+                                <FieldLabel htmlFor="phoneNumber">
+                                    Phone Number
+                                </FieldLabel>
+                                <Input id="phoneNumber" type="text" placeholder="05X-XXX-XXXX" defaultValue={data?.phoneNumber} />
+                            </div>
+                        </Field>
 
-                        <Input id="newPassword" {...registerPassword("newPassword")} type="password"
-                            placeholder="New password" aria-invalid={!!passwordErrors.newPassword}
-                            className='h-11' />
+                        <Separator />
 
-                        {passwordErrors.newPassword && (
-                            <FieldError>
-                                {passwordErrors.newPassword.message}
-                            </FieldError>
-                        )}
-                    </Field>
+                        <Field>
+                            <div className='grid grid-cols-1 gap-1.5 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
+                                <FieldLabel htmlFor="city">
+                                    City
+                                </FieldLabel>
+                                <Input id="city" type="text" placeholder="Enter your city" defaultValue={data?.city===null ? "" : data?.city} />
+                            </div>
+                        </Field>
 
-                    <Field>
-                        <FieldLabel htmlFor="confirmNewPassword" data-invalid={!!passwordErrors.confirmNewPassword}>
-                            {t("confirmNewPassword")}
-                        </FieldLabel>
+                        <Separator />
 
-                        <Input id="confirmNewPassword" {...registerPassword("confirmNewPassword")} type="password"
-                            placeholder="Confirm new password" aria-invalid={!!passwordErrors.confirmNewPassword}
-                            className='h-11' />
-
-                        {passwordErrors.confirmNewPassword && (
-                            <FieldError>
-                                {passwordErrors.confirmNewPassword.message}
-                            </FieldError>
-                        )}
-                    </Field>
-
-                    <Button type="button" className='w-full sm:w-fit'
-                        disabled={isUpdatingPassword}
-                        onClick={handlePasswordSubmit(
-                            onPasswordSubmit,
-                            (errors) => {
-                                console.log("Validation errors:", errors);
-                            }
-                        )}>
-                        {isUpdatingPassword ? t("updating") : t("updatePassword")}
-                    </Button>
-                </div>
-            </div>
+                        <Field>
+                            <div className='flex justify-end w-full'>
+                                <Button type="submit" disabled = {Object.keys(errors).length > 0 || isPendingEmail}>
+                                    {isPendingEmail ? t("saving") : t("save")}
+                                </Button>
+                            </div>
+                        </Field>
+                    </FieldGroup>
+                </form>
+            </section>
         </div>
     )
 }
