@@ -15,13 +15,10 @@ import PersonalInfo from '@/components/ProfileInfo/PersonalInfo';
 import PasswordReset from '@/components/ProfileInfo/PasswordReset';
 
 export default function ProfileInfo() {
-    const { t } = useTranslation();
+    const { t } = useTranslation("profile");
 
     const { data, isLoading, isError, error } = useProfile();
-
-    //-----------------------------------------------------------
-
-    //------------------------------------------
+    
     if (isLoading) {
         return <CircularProgress />
     }
@@ -33,7 +30,7 @@ export default function ProfileInfo() {
     return (
         <div className='stack items-start gap-5'>
             <h1 className='capitalize text-xl font-semibold text-heading-foreground'>
-                Settings
+                {t("profile.settings")}
             </h1>
 
             <PersonalInfo data={data} />

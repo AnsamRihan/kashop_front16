@@ -17,7 +17,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default function PersonalInfo({ data }) {
 
-    const { t } = useTranslation();
+    const { t } = useTranslation("profile");
 
     const { mutate: updateEmail, isPending } = useUpdateEmail();
 
@@ -38,17 +38,17 @@ export default function PersonalInfo({ data }) {
                     NewEmail: formData.email,
                 }, {
                 onSuccess: () => {
-                    toast.success("Email updated successfully!");
+                    toast.success(t("profile.personalInfo.emailUpdated"));
                 }, onError: (error) => {
                     toast.error(
                         error.response?.data?.message ||
-                        "Failed to update email."
+                        t("profile.personalInfo.emailUpdateFailed")
                     );
                 },
             }
             );
         } else {
-            toast.error("This is the email you currently use!")
+            toast.error(t("profile.personalInfo.currentEmail"))
         }
     };
     return (
@@ -56,10 +56,10 @@ export default function PersonalInfo({ data }) {
             {/*Title */}
             <div className='stack items-start gap-0.5'>
                 <h2 className='text-heading-foreground font-semibold capitalize'>
-                    personal info
+                    {t("profile.personalInfo.title")}
                 </h2>
                 <p className='text-sm'>
-                    Update your photo and personal details here.
+                    {t("profile.personalInfo.description")}
                 </p>
             </div>
             <Separator />
@@ -68,15 +68,21 @@ export default function PersonalInfo({ data }) {
                 <FieldGroup className='gap-4'>
                     <Field>
                         <div className='md:grid grid-cols-1 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
-                            <FieldLabel htmlFor="firstName" className=" hidden md:flex">Name</FieldLabel>
+                            <FieldLabel htmlFor="firstName" className=" hidden md:flex">
+                                {t("profile.personalInfo.name")}
+                            </FieldLabel>
 
                             <div className='grid grid-cols-1 md:grid-cols-2 gap-6 w-full'>
                                 <div className='stack gap-1.5 items-start w-full'>
-                                    <FieldLabel htmlFor="firstName" className="md:hidden">First Name <span className="text-red-500">*</span> </FieldLabel>
+                                    <FieldLabel htmlFor="firstName" className="md:hidden">
+                                        {t("profile.personalInfo.firstName")}
+                                    </FieldLabel>
                                     <Input id="firstName" type="text" placeholder="First Name" value={firstName} />
                                 </div>
                                 <div className='stack gap-1.5 items-start w-full'>
-                                    <FieldLabel htmlFor="lastName" className="md:hidden">Last Name <span className="text-red-500">*</span> </FieldLabel>
+                                    <FieldLabel htmlFor="lastName" className="md:hidden">
+                                        {t("profile.personalInfo.lastName")}
+                                    </FieldLabel>
                                     <Input id="lastName" type="text" placeholder="Last Name" value={lastName} />
                                 </div>
                             </div>
@@ -88,10 +94,10 @@ export default function PersonalInfo({ data }) {
                     <Field>
                         <div className='grid grid-cols-1 gap-1.5 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
                             <FieldLabel htmlFor="email" data-invalid={!!errors.email}>
-                                Email <span className="text-red-500">*</span>
+                                {t("profile.personalInfo.email")} <span className="text-red-500">*</span>
                             </FieldLabel>
                             <div className='stack items-start gap-1.5 w-full'>
-                                <Input id="email" type="text" {...register("email")} placeholder="Email" defaultValue={data?.email} aria-invalid={!!errors.email} />
+                                <Input id="email" type="text" {...register("email")} placeholder={t("profile.personalInfo.emailPlaceholder")} defaultValue={data?.email} aria-invalid={!!errors.email} />
                                 {errors.email && (
                                     <FieldError>
                                         {errors.email.message}
@@ -106,7 +112,7 @@ export default function PersonalInfo({ data }) {
                     <Field>
                         <div className='grid grid-cols-1 gap-1.5 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
                             <FieldLabel htmlFor="phoneNumber">
-                                Phone Number
+                                {t("profile.personalInfo.phoneNumber")}
                             </FieldLabel>
                             <Input id="phoneNumber" type="text" placeholder="05X-XXX-XXXX" defaultValue={data?.phoneNumber} />
                         </div>
@@ -117,9 +123,9 @@ export default function PersonalInfo({ data }) {
                     <Field>
                         <div className='grid grid-cols-1 gap-1.5 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
                             <FieldLabel htmlFor="city">
-                                City
+                                {t("profile.personalInfo.city")}
                             </FieldLabel>
-                            <Input id="city" type="text" placeholder="Enter your city" defaultValue={data?.city === null ? "" : data?.city} />
+                            <Input id="city" type="text" placeholder={t("profile.personalInfo.cityPlaceholder")} defaultValue={data?.city === null ? "" : data?.city} />
                         </div>
                     </Field>
 

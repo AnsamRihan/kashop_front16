@@ -59,6 +59,9 @@ import arOrderSuccess from "./translations/ar/orderSuccess.json"
 import enProfileLayout from "./translations/en/profileLayout.json"
 import arProfileLayout from "./translations/ar/profileLayout.json"
 
+import enProfile from "./translations/en/profile.json"
+import arProfile from "./translations/ar/profile.json"
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -84,6 +87,7 @@ i18n
                 checkout: enCheckout,
                 orderSuccess: enOrderSuccess,
                 profileLayout: enProfileLayout,
+                profile: enProfile,
             },
             ar: {
                 login: arLogin,
@@ -105,6 +109,7 @@ i18n
                 checkout: arCheckout,
                 orderSuccess: arOrderSuccess,
                 profileLayout: arProfileLayout,
+                profile: arProfile,
             },
         },
 

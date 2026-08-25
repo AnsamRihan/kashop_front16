@@ -1,0 +1,38 @@
+{
+  "profile": {
+    "settings": "الإعدادات",
+
+    "personalInfo": {
+      "title": "المعلومات الشخصية",
+      "description": "قم بتحديث صورتك وتفاصيلك الشخصية هنا.",
+      "name": "الاسم",
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phoneNumber": "رقم الهاتف",
+      "city": "المدينة",
+      "emailPlaceholder": "البريد الإلكتروني",
+      "phonePlaceholder": "05X-XXX-XXXX",
+      "cityPlaceholder": "أدخل مدينتك",
+      "currentEmail": "هذا هو البريد الإلكتروني الذي تستخدمه حالياً!",
+      "emailUpdated": "تم تحديث البريد الإلكتروني بنجاح!",
+      "emailUpdateFailed": "فشل تحديث البريد الإلكتروني."
+    },
+
+    "password": {
+      "title": "كلمة المرور",
+      "description": "يرجى إدخال كلمة المرور الحالية لتغيير كلمة المرور.",
+      "currentPassword": "كلمة المرور الحالية",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+      "currentPasswordPlaceholder": "أدخل كلمة المرور الحالية",
+      "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+      "confirmNewPasswordPlaceholder": "أكد كلمة المرور الجديدة",
+      "updated": "تم تحديث كلمة المرور بنجاح!",
+      "updateFailed": "فشل تحديث كلمة المرور."
+    }
+  },
+
+  "save": "حفظ",
+  "saving": "جارٍ الحفظ..."
+}

@@ -17,7 +17,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default function PasswordReset({ data }) {
 
-    const { t } = useTranslation();
+    const { t } = useTranslation("profile");
 
     const { mutate: updatePassword, isPending } = useUpdatePassword();
 
@@ -37,12 +37,12 @@ export default function PasswordReset({ data }) {
             {
                 onSuccess: (response) => {
                     if(response.data.success){
-                        toast.error(response?.data?.message || "Password updated successfully!");
+                        toast.error(response?.data?.message || t("profile.password.updated"));
                         resetPassword();
                     }else{
                         toast.error(
                             response?.data?.message ||
-                            "Failed to update password."
+                            t("profile.password.updateFailed")
                         );
                     } 
                     
@@ -50,7 +50,7 @@ export default function PasswordReset({ data }) {
                 onError: (error) => {
                     toast.error(
                         error.response?.data?.message ||
-                        "Failed to update password."
+                        t("profile.password.updateFailed")
                     );
                 },
             }
@@ -61,10 +61,10 @@ export default function PasswordReset({ data }) {
             {/*Title */}
             <div className='stack items-start gap-0.5'>
                 <h2 className='text-heading-foreground font-semibold capitalize'>
-                    password
+                    {t("profile.password.title")}
                 </h2>
                 <p className='text-sm'>
-                    Please enter your current password to change your password.
+                    {t("profile.password.description")}
                 </p>
             </div>
             <Separator />
@@ -74,10 +74,10 @@ export default function PasswordReset({ data }) {
                     <Field>
                         <div className='grid grid-cols-1 gap-1.5 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
                             <FieldLabel htmlFor="currentPassword" data-invalid={!!errors.currentPassword}>
-                                Current password <span className="text-red-500">*</span>
+                                {t("profile.password.currentPassword")} <span className="text-red-500">*</span>
                             </FieldLabel>
                             <div className='stack items-start gap-1.5 w-full'>
-                                <Input id="currentPassword" type="password" {...register("currentPassword")} placeholder="Enter current password" aria-invalid={!!errors.currentPassword} />
+                                <Input id="currentPassword" type="password" {...register("currentPassword")} placeholder={t("profile.password.currentPasswordPlaceholder")} aria-invalid={!!errors.currentPassword} />
                                 {errors.currentPassword && (
                                     <FieldError>
                                         {errors.currentPassword.message}
@@ -92,10 +92,10 @@ export default function PasswordReset({ data }) {
                     <Field>
                         <div className='grid grid-cols-1 gap-1.5 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
                             <FieldLabel htmlFor="newPassword" data-invalid={!!errors.newPassword}>
-                                New password <span className="text-red-500">*</span>
+                                {t("profile.password.newPassword")} <span className="text-red-500">*</span>
                             </FieldLabel>
                             <div className='stack items-start gap-1.5 w-full'>
-                                <Input id="newPassword" type="password" {...register("newPassword")} placeholder="Enter new password" aria-invalid={!!errors.newPassword} />
+                                <Input id="newPassword" type="password" {...register("newPassword")} placeholder={t("profile.password.newPasswordPlaceholder")} aria-invalid={!!errors.newPassword} />
                                 {errors.newPassword && (
                                     <FieldError>
                                         {errors.newPassword.message}
@@ -110,10 +110,10 @@ export default function PasswordReset({ data }) {
                     <Field>
                         <div className='grid grid-cols-1 gap-1.5 md:grid-cols-[minmax(100px,280px)_minmax(300px,800px)] md:gap-8'>
                             <FieldLabel htmlFor="confirmNewPassword" data-invalid={!!errors.confirmNewPassword}>
-                                Confirm new password <span className="text-red-500">*</span>
+                                {t("profile.password.confirmNewPassword")} <span className="text-red-500">*</span>
                             </FieldLabel>
                             <div className='stack items-start gap-1.5 w-full'>
-                                <Input id="confirmNewPassword" type="password" {...register("confirmNewPassword")} placeholder="Confirm new password"
+                                <Input id="confirmNewPassword" type="password" {...register("confirmNewPassword")} placeholder={t("profile.password.confirmNewPasswordPlaceholder")}
                                     aria-invalid={!!errors.confirmNewPassword} />
                                 {errors.confirmNewPassword && (
                                     <FieldError>

@@ -1,0 +1,38 @@
+{
+  "profile": {
+    "settings": "Settings",
+
+    "personalInfo": {
+      "title": "Personal Info",
+      "description": "Update your photo and personal details here.",
+      "name": "Name",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "city": "City",
+      "emailPlaceholder": "Email",
+      "phonePlaceholder": "05X-XXX-XXXX",
+      "cityPlaceholder": "Enter your city",
+      "currentEmail": "This is the email you currently use!",
+      "emailUpdated": "Email updated successfully!",
+      "emailUpdateFailed": "Failed to update email."
+    },
+
+    "password": {
+      "title": "Password",
+      "description": "Please enter your current password to change your password.",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmNewPassword": "Confirm new password",
+      "currentPasswordPlaceholder": "Enter current password",
+      "newPasswordPlaceholder": "Enter new password",
+      "confirmNewPasswordPlaceholder": "Confirm new password",
+      "updated": "Password updated successfully!",
+      "updateFailed": "Failed to update password."
+    }
+  },
+
+  "save": "Save",
+  "saving": "Saving..."
+}
