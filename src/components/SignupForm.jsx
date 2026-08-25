@@ -73,7 +73,7 @@ export function SignupForm({...props}) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <FieldGroup>
             <Field data-invalid={errors?.userName}>
-              <FieldLabel htmlFor="userName">{t("username")}</FieldLabel>
+              <FieldLabel htmlFor="userName">{t("username")} <span className="text-red-500">*</span> </FieldLabel>
               <Input id="userName" type="text" placeholder="John_Doe" {...register("userName")} 
               aria-invalid={errors?.userName}/>
               {errors.userName && (
@@ -83,7 +83,7 @@ export function SignupForm({...props}) {
               )}
             </Field>
             <Field data-invalid={errors?.fullName}>
-              <FieldLabel htmlFor="fullName">{t("fullName")}</FieldLabel>
+              <FieldLabel htmlFor="fullName">{t("fullName")} <span className="text-red-500">*</span> </FieldLabel>
               <Input id="fullName" type="text" placeholder="John Doe" {...register("fullName")} 
               aria-invalid={errors?.fullName}/>
               {errors.fullName && (
@@ -93,7 +93,7 @@ export function SignupForm({...props}) {
               )}
             </Field>
             <Field data-invalid={errors?.email}>
-              <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
+              <FieldLabel htmlFor="email">{t("email")} <span className="text-red-500">*</span> </FieldLabel>
               <Input id="email" type="email" placeholder="m@example.com" {...register("email")} 
               aria-invalid={errors?.email}/>
               <FieldDescription className="text-start">
@@ -106,7 +106,7 @@ export function SignupForm({...props}) {
               )}
             </Field>
             <Field data-invalid={errors?.phoneNumber}>
-              <FieldLabel htmlFor="phoneNumber">{t("phoneNumber")}</FieldLabel>
+              <FieldLabel htmlFor="phoneNumber">{t("phoneNumber")} <span className="text-red-500">*</span> </FieldLabel>
               <Input
                 id="phoneNumber"
                 type="tel"
@@ -121,7 +121,7 @@ export function SignupForm({...props}) {
               )}
             </Field>
             <Field data-invalid={errors?.password}>
-              <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
+              <FieldLabel htmlFor="password">{t("password")} <span className="text-red-500">*</span> </FieldLabel>
               <Input id="password" type="password" {...register("password")} 
               aria-invalid={errors?.password}/>
               {errors.password && (
@@ -131,9 +131,7 @@ export function SignupForm({...props}) {
               )}
             </Field>
             <Field data-invalid={passwordMismatch}>
-              <FieldLabel htmlFor="confirm-password">
-                {t("confirmPassword")}
-              </FieldLabel>
+              <FieldLabel htmlFor="confirm-password">{t("confirmPassword")} <span className="text-red-500">*</span> </FieldLabel>
               <Input id="confirm-password" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
                 aria-invalid={passwordMismatch}/>
               <FieldDescription className="text-start">
