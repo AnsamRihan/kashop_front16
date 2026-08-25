@@ -1,41 +1,81 @@
 import * as yup from "yup";
+import i18n from "@/i18next";
 
 export const RegisterSchema = yup.object({
-  userName: yup
-    .string()
-    .required("Username is required")
-    .min(3, "Username must be at least 3 characters")
-    .max(30, "Username must be at most 30 characters"),
+    userName: yup
+        .string()
+        .required(
+            i18n.t("usernameRequired", { ns: "validation" })
+        )
+        .min(
+            3,
+            i18n.t("usernameMin", { ns: "validation" })
+        )
+        .max(
+            30,
+            i18n.t("usernameMax", { ns: "validation" })
+        ),
 
-  fullName: yup
-    .string()
-    .required("Full name is required")
-    .min(2, "Full name must be at least 2 characters")
-    .max(40, "Full name must be at most 40 characters"),
+    fullName: yup
+        .string()
+        .required(
+            i18n.t("fullNameRequired", { ns: "validation" })
+        )
+        .min(
+            2,
+            i18n.t("fullNameMin", { ns: "validation" })
+        )
+        .max(
+            40,
+            i18n.t("fullNameMax", { ns: "validation" })
+        ),
 
-  email: yup
-    .string()
-    .required("Email is required")
-    .email("Please enter a valid email address"),
+    email: yup
+        .string()
+        .required(
+            i18n.t("emailRequired", { ns: "validation" })
+        )
+        .email(
+            i18n.t("emailInvalid", { ns: "validation" })
+        ),
 
-  password: yup
-    .string()
-    .required("Password is required")
-    .min(8, "Password must be at least 8 characters")
-    .max(64, "Password must be at most 64 characters")
-    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-    .matches(/[a-z]/, "Password must contain at least one lowercase letter")
-    .matches(/[0-9]/, "Password must contain at least one number")
-    .matches(
-      /[^A-Za-z0-9]/,
-      "Password must contain at least one special character"
-    ),
+    password: yup
+        .string()
+        .required(
+            i18n.t("passwordRequired", { ns: "validation" })
+        )
+        .min(
+            8,
+            i18n.t("passwordMin", { ns: "validation" })
+        )
+        .max(
+            64,
+            i18n.t("passwordMax", { ns: "validation" })
+        )
+        .matches(
+            /[A-Z]/,
+            i18n.t("passwordUppercase", { ns: "validation" })
+        )
+        .matches(
+            /[a-z]/,
+            i18n.t("passwordLowercase", { ns: "validation" })
+        )
+        .matches(
+            /[0-9]/,
+            i18n.t("passwordNumber", { ns: "validation" })
+        )
+        .matches(
+            /[^A-Za-z0-9]/,
+            i18n.t("passwordSpecial", { ns: "validation" })
+        ),
 
-  phoneNumber: yup
-    .string()
-    .required("Phone number is required")
-    .matches(
-      /^05\d{8}$/,
-      "Please enter a valid phone number"
-    ),
+    phoneNumber: yup
+        .string()
+        .required(
+            i18n.t("phoneRequired", { ns: "validation" })
+        )
+        .matches(
+            /^05\d{8}$/,
+            i18n.t("phoneInvalid", { ns: "validation" })
+        ),
 });

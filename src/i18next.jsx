@@ -65,6 +65,9 @@ import arProfile from "./translations/ar/profile.json"
 import enOrders from "./translations/en/orders.json"
 import arOrders from "./translations/ar/orders.json"
 
+import enValidation from "./translations/en/validation.json";
+import arValidation from "./translations/ar/validation.json";
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -92,6 +95,7 @@ i18n
                 profileLayout: enProfileLayout,
                 profile: enProfile,
                 orders: enOrders,
+                validation: enValidation,
             },
             ar: {
                 login: arLogin,
@@ -115,6 +119,7 @@ i18n
                 profileLayout: arProfileLayout,
                 profile: arProfile,
                 orders: arOrders,
+                validation: arValidation,
             },
         },
 

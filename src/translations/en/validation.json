@@ -1,0 +1,31 @@
+{
+  "usernameRequired": "Username is required",
+  "usernameMin": "Username must be at least 3 characters",
+  "usernameMax": "Username must be at most 30 characters",
+
+  "fullNameRequired": "Full name is required",
+  "fullNameMin": "Full name must be at least 2 characters",
+  "fullNameMax": "Full name must be at most 40 characters",
+
+  "emailRequired": "Email is required",
+  "emailInvalid": "Please enter a valid email address",
+
+  "passwordRequired": "Password is required",
+  "passwordMin": "Password must be at least 8 characters",
+  "passwordMax": "Password must be at most 64 characters",
+  "passwordUppercase": "Password must contain at least one uppercase letter",
+  "passwordLowercase": "Password must contain at least one lowercase letter",
+  "passwordNumber": "Password must contain at least one number",
+  "passwordSpecial": "Password must contain at least one special character",
+
+  "phoneRequired": "Phone number is required",
+  "phoneInvalid": "Please enter a valid phone number",
+
+  "codeRequired": "The code is required",
+  "codeLength": "Code must consist of 4 numbers",
+  "codeNumbers": "Verification code must contain only numbers",
+
+  "currentPasswordRequired": "Current password is required",
+  "confirmPasswordRequired": "Please confirm your new password",
+  "passwordsMatch": "Passwords must match"
+}

@@ -1,8 +1,9 @@
 import * as yup from "yup";
+import i18n from "@/i18next";
 
 export const updateEmailSchema = yup.object({
   email: yup
     .string()
-    .required("Email is required")
-    .email("Please enter a valid email address"),
+    .required(i18n.t("emailRequired", {ns: "validation"}))
+    .email(i18n.t("emailInvalid", {ns: "validation"})),
 });

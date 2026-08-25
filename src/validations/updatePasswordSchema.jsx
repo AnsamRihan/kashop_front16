@@ -1,27 +1,70 @@
 import * as yup from "yup";
+import i18n from "@/i18next";
 
 export const updatePasswordSchema = yup.object({
     currentPassword: yup
         .string()
-        .required("Current password is required"),
+        .required(
+            i18n.t("currentPasswordRequired", {
+                ns: "validation",
+            })
+        ),
 
     newPassword: yup
         .string()
-        .required("Password is required")
-        .min(8, "Password must be at least 8 characters")
-        .max(64, "Password must be at most 64 characters")
-        .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-        .matches(/[a-z]/, "Password must contain at least one lowercase letter")
-        .matches(/[0-9]/, "Password must contain at least one number")
+        .required(
+            i18n.t("passwordRequired", {
+                ns: "validation",
+            })
+        )
+        .min(
+            8,
+            i18n.t("passwordMin", {
+                ns: "validation",
+            })
+        )
+        .max(
+            64,
+            i18n.t("passwordMax", {
+                ns: "validation",
+            })
+        )
         .matches(
-          /[^A-Za-z0-9]/,
-          "Password must contain at least one special character"),
+            /[A-Z]/,
+            i18n.t("passwordUppercase", {
+                ns: "validation",
+            })
+        )
+        .matches(
+            /[a-z]/,
+            i18n.t("passwordLowercase", {
+                ns: "validation",
+            })
+        )
+        .matches(
+            /[0-9]/,
+            i18n.t("passwordNumber", {
+                ns: "validation",
+            })
+        )
+        .matches(
+            /[^A-Za-z0-9]/,
+            i18n.t("passwordSpecial", {
+                ns: "validation",
+            })
+        ),
 
     confirmNewPassword: yup
         .string()
-        .required("Please confirm your new password")
+        .required(
+            i18n.t("confirmPasswordRequired", {
+                ns: "validation",
+            })
+        )
         .oneOf(
             [yup.ref("newPassword")],
-            "Passwords must match"
+            i18n.t("passwordsMatch", {
+                ns: "validation",
+            })
         ),
 });
