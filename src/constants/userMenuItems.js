@@ -12,7 +12,7 @@ export const userMenuItems = [
   },
   {
     key: "orders",
-    path: "#",
+    path: "/profile/orders",
     icon: Package ,
   },
   {

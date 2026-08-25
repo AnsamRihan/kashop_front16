@@ -47,7 +47,6 @@ export function ResetPasswordForm({ className, ...props }) {
     } = useResetPassword();
 
     const onSubmit = async (data) => {
-        console.log(data.code);
         const resetData = {
             ...data,
             email: localStorage.getItem("email"),
