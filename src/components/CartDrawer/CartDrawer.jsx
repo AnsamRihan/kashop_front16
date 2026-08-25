@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Drawer,
     DrawerClose,
@@ -14,7 +14,7 @@ import { ShoppingCart, X } from 'lucide-react';
 import { Badge } from '../ui/badge';
 import CircularProgress from '../CircularProgress/CircularProgress';
 import ErrorFetchingData from '../ErrorFetchingData.jsx/ErrorFetchingData';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import CartItem from './CartItem';
 import { Table, TableBody } from '../ui/table';
 
@@ -28,8 +28,15 @@ export default function CartDrawer() {
     const cartCount = data?.items.length ?? 0;
     const navigate = useNavigate();
 
+    const [open, setOpen] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        setOpen(false);
+    }, [location.pathname]);
+
     return (
-        <Drawer swipeDirection={direction}>
+        <Drawer swipeDirection={direction} open={open} onOpenChange={setOpen}>
             <DrawerTrigger 
             render={<Button variant="ghost" className="relative p-0 group">
                 <ShoppingCart className="size-4 xxs:size-5 group-hover:text-primary"/>

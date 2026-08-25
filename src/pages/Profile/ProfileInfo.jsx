@@ -11,7 +11,8 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner';
-
+import useUpdatePassword from '@/hooks/useUpdatePassword';
+import { updatePasswordSchema } from '@/validations/updatePasswordSchema';
 
 export default function ProfileInfo() {
     const { t } = useTranslation();
@@ -40,6 +41,41 @@ export default function ProfileInfo() {
                 );
             },
         }
+        );
+    };
+
+    //-----------------------------------------------
+    
+
+    const { mutate: updatePassword, isPending: isUpdatingPassword } =
+        useUpdatePassword();
+
+    const { register: registerPassword, handleSubmit: handlePasswordSubmit,
+        reset: resetPassword, formState: { errors: passwordErrors } } = useForm({
+            resolver: yupResolver(updatePasswordSchema),
+            mode: "onChange"
+        });
+
+    const onPasswordSubmit = (formData) => {
+        updatePassword(
+            {
+                CurrentPassword: formData.currentPassword,
+                NewPassword: formData.newPassword,
+                ConfirmNewPassword: formData.confirmNewPassword,
+            },
+            {
+                onSuccess: (response) => {
+                    console.log(console);
+                    toast.success("Password updated successfully!");
+                    resetPassword();
+                },
+                onError: (error) => {
+                    toast.error(
+                        error.response?.data?.message ||
+                        "Failed to update password."
+                    );
+                },
+            }
         );
     };
 
@@ -132,6 +168,76 @@ export default function ProfileInfo() {
                             }
                         )}>
                         {isUpdatingEmail ? t("updating") : t("updateEmail")}
+                    </Button>
+                </div>
+            </div>
+
+            {/*Update Password */}
+            <div className='w-full p-6 bg-tertiary-background rounded-lg border border-background-border
+            stack items-end gap-6'>
+                <h2 className='w-full flex justify-start text-primary font-semibold text-2xl xs:text-3xl tracking-[-0.32px]'>
+                    {t("passwordManagement")}
+                </h2>
+
+                <div className='w-full stack gap-4'>
+
+                    <Field>
+                        <FieldLabel htmlFor="currentPassword" data-invalid={!!passwordErrors.currentPassword}>
+                            {t("currentPassword")}
+                        </FieldLabel>
+
+                        <Input id="currentPassword" {...registerPassword("currentPassword")}
+                            type="password" placeholder="Current password" aria-invalid={!!passwordErrors.currentPassword}
+                            className='h-11'/>
+
+                        {passwordErrors.currentPassword && (
+                            <FieldError>
+                                {passwordErrors.currentPassword.message}
+                            </FieldError>
+                        )}
+                    </Field>
+
+                    <Field>
+                        <FieldLabel htmlFor="newPassword" data-invalid={!!passwordErrors.newPassword} >
+                            {t("newPassword")}
+                        </FieldLabel>
+
+                        <Input id="newPassword" {...registerPassword("newPassword")} type="password"
+                            placeholder="New password" aria-invalid={!!passwordErrors.newPassword}
+                            className='h-11' />
+
+                        {passwordErrors.newPassword && (
+                            <FieldError>
+                                {passwordErrors.newPassword.message}
+                            </FieldError>
+                        )}
+                    </Field>
+
+                    <Field>
+                        <FieldLabel htmlFor="confirmNewPassword" data-invalid={!!passwordErrors.confirmNewPassword}>
+                            {t("confirmNewPassword")}
+                        </FieldLabel>
+
+                        <Input id="confirmNewPassword" {...registerPassword("confirmNewPassword")} type="password"
+                            placeholder="Confirm new password" aria-invalid={!!passwordErrors.confirmNewPassword}
+                            className='h-11' />
+
+                        {passwordErrors.confirmNewPassword && (
+                            <FieldError>
+                                {passwordErrors.confirmNewPassword.message}
+                            </FieldError>
+                        )}
+                    </Field>
+
+                    <Button type="button" className='w-full sm:w-fit'
+                        disabled={isUpdatingPassword}
+                        onClick={handlePasswordSubmit(
+                            onPasswordSubmit,
+                            (errors) => {
+                                console.log("Validation errors:", errors);
+                            }
+                        )}>
+                        {isUpdatingPassword ? t("updating") : t("updatePassword")}
                     </Button>
                 </div>
             </div>
