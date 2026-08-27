@@ -41,6 +41,9 @@
     --color-tertiary-background: var(--tertiary-background);
     --color-icon-background: var(--icon-background);
     --color-background-border: var(--background-border);
+    --color-hero-heading-foreground: var(--hero-heading-foreground);
+    --color-hero-foreground: var(--hero-foreground);
+    --color-hero-primary: var(--hero-primary);
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
@@ -100,6 +103,9 @@
     --sidebar-input-background: #FBEAE7;
     --sidebar-input-border: #D0C2D04D;
     --sidebar-navlink-background: #834D9B1A;
+    --hero-heading-foreground: #221A18;
+    --hero-foreground: #362f37;
+    --hero-primary: #81449C;
 }
 
 .dark {
@@ -134,6 +140,9 @@
     --sidebar-input-background: #382E2C66;
     --sidebar-input-border: #D0C2D033;
     --sidebar-navlink-background: #834D9B;
+    --hero-heading-foreground: #160f17;
+    --hero-foreground: #362f37;
+    --hero-primary: #A255BD;
 }
 
 @layer base {
