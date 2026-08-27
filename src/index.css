@@ -214,7 +214,9 @@
 }
 
 @utility category {
-    @apply capitalize circle bg-icon-background py-2 px-6 font-medium text-xs xs:text-sm tracking-[0.14px] hover:text-primary-foreground hover:bg-primary transition-all duration-150 ease-in-out;
+    @apply capitalize w-full h-full center rounded-lg border border-primary/15 bg-primary/5 py-10 px-6 font-medium 
+    xs:text-lg tracking-[0.14px] 
+    hover:text-primary-foreground hover:bg-primary transition-all duration-150 ease-in-out;
 }
 
 @utility pageHeader {

@@ -4,9 +4,16 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import CircularProgress from "../CircularProgress/CircularProgress";
 import ErrorFetchingData from "../ErrorFetchingData.jsx/ErrorFetchingData";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel"
 
 export default function Categories() {
-    const { t } = useTranslation("home");
+    const { t, i18n } = useTranslation("home");
 
     const {
         data,
@@ -52,27 +59,26 @@ export default function Categories() {
 
                     {/* Categories */}
                     {!isLoading && !isError && (
-                        <div className="w-full row gap-4 flex-wrap">
+                        <div className='w-full center text-center'>
+                            <Carousel opts={{
+                                align: "start",
+                                loop: true,
+                                direction: i18n.dir(),
+                            }}
+                                className="w-full max-w-[68%] xs:max-w-[80%] sm:max-w-[85%] md:max-w-[88%] lg:max-w-[90%] xl:max-w-[93%]">
 
-                            {/* All Products */}
-                            <Link
-                                to="/shop"
-                                className="category"
-                            >
-                                {t("categories.allProducts")}
-                            </Link>
-
-                            {/* Categories */}
-                            {categories.map((category) => (
-                                <Link
-                                    key={category.id}
-                                    to={`/categories?category=${category.id}`}
-                                    className="category"
-                                >
-                                    {category.name}
-                                </Link>
-                            ))}
-
+                                <CarouselContent>
+                                    {categories.map((category) => (
+                                        <CarouselItem key={category.id} className="basis-1/1 xs:basis-1/2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
+                                            <Link to={`/categories?category=${category.id}`} className="category">
+                                                {category.name}
+                                            </Link>
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                <CarouselPrevious />
+                                <CarouselNext />
+                            </Carousel>
                         </div>
                     )}
 
