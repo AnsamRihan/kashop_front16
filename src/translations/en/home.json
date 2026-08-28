@@ -75,5 +75,8 @@
             "description": "Carefully packaged and promptly delivered to your door within 2-3 business days."
         }
     },
+    "journal": {
+        "title": "The Journal"
+    },
     "viewAll": "View All"
 }

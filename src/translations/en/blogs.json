@@ -1,0 +1,45 @@
+{
+    "readMore": "Read More",
+    "header": {
+        "category": "Lifestyle",
+        "title": "The Art of Curated Living: Designing Your Sanctuary",
+        "description": "Explore the philosophy of creating a home that reflects your inner self. We delve into the nuances of texture, light, and mindful curation to build a space…",
+        "button": "Read Article"
+    },
+    "blog1": {
+        "category": "Fashion",
+        "date": "Oct 24, 2023",
+        "title": "The Linen Renaissance: Earthy Tones for Autumn",
+        "description": "Embracing the textural beauty of organic linen and leather in a palette inspired by natural landscapes. A guide to…"
+    },
+    "blog2": {
+        "category": "Tech",
+        "date": "Oct 22, 2023",
+        "title": "Minimalist Workspace: Finding Focus in the Details",
+        "description": "Curating a home office that inspires productivity without sacrificing calm. We explore the essential tech tools that blend…"
+    },
+    "blog3": {
+        "category": "Beauty",
+        "date": "Oct 18, 2023",
+        "title": "Transparent Beauty: The Rise of Clean Formulations",
+        "description": "A deep dive into the minimalist skincare revolution. Unpacking the ingredients and the aesthetic of simplicity that is…"
+    },
+    "blog4": {
+        "category": "Shoes",
+        "date": "Oct 15, 2023",
+        "title": "Step Lightly: The Perfect Autumn Loafer",
+        "description": "Exploring the intersection of comfort and sophisticated design. Why the classic leather loafer remains a staple for the…"
+    },
+    "blog5": {
+        "category": "Electronics",
+        "date": "Oct 10, 2023",
+        "title": "Sonic Purity: High-End Audio Meets Home Design",
+        "description": "How premium audio equipment is evolving to become sculptural objects d'art. Integrating high-fidelity sound into the…"
+    },
+    "blog6": {
+        "category": "Clothes",
+        "date": "Oct 05, 2023",
+        "title": "Tactile Elegance: The Silk & Cotton Edit",
+        "description": "Celebrating the drape and feel of premium natural fibers. An editorial look at the subtle tailoring that defines modern…"
+    }
+}

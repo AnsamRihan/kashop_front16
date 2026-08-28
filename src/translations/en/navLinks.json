@@ -1,5 +1,9 @@
 {
   "home": "Home",
   "shop": "Shop",
-  "categories": "Categories"
+  "categories": "Categories",
+  "about": "About Us",
+  "contact": "Contact Us",
+  "faqs": "FAQs",
+  "blog": "Blog"
 }
