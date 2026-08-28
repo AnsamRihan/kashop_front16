@@ -17,6 +17,12 @@
     "products": {
         "title": "منتجات مميزة"
     },
+    "newArrivals": {
+        "title": "وصل حديثًا",
+        "circleTitle": "انضم إلى دائرة Kashop",
+        "circleDescription": "احصل على وصول مبكر إلى المنتجات الحصرية وأسعار خاصة للأعضاء.",
+        "learnMore": "اعرف المزيد"
+    },
     "features": {
         "simpleShopping": {
             "title": "تجربة تسوق بسيطة",

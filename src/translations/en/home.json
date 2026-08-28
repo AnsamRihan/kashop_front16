@@ -17,6 +17,12 @@
     "products": {
         "title": "Featured Products"
     },
+    "newArrivals": {
+        "title": "New Arrivals",
+        "circleTitle": "Join our Kashop Circle",
+        "circleDescription": "Get early access to exclusive drops and members-only pricing.",
+        "learnMore": "Learn More"
+    },
     "features": {
         "simpleShopping": {
             "title": "Simple Shopping Experience",

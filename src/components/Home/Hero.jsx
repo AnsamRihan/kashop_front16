@@ -12,6 +12,7 @@ import {
 import i18n from '@/i18next'
 import heroImage1 from './../../assets/images/home/HeroCarousel1.png'
 import heroImage2 from './../../assets/images/home/HeroCarousel2.png'
+import Autoplay from "embla-carousel-autoplay"
 
 export default function Hero() {
 
@@ -19,11 +20,8 @@ export default function Hero() {
 
     return (
         <section className='h-[calc(100vh-80px)] w-full mb-8'>
-            <Carousel opts={{
-                align: "start",
-                loop: true,
-                direction: i18n.dir(),
-            }}
+            <Carousel opts={{align: "start", loop: true, direction: i18n.dir()}}
+                plugins={[ Autoplay({ delay: 4000, }), ]}
                 className="w-full h-full">
                 <CarouselContent className='h-[calc(100vh-80px)]'>
                     <CarouselItem className='h-full'>
