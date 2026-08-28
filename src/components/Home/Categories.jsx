@@ -27,7 +27,7 @@ export default function Categories() {
     }
 
     const categories = data?.response?.data || [];
-
+    
     return (
         <section className="pb-8">
             <div className="container">
