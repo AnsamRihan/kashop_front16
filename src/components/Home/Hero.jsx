@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/button'
 import { useTranslation } from 'react-i18next'
@@ -18,10 +18,17 @@ export default function Hero() {
 
     const { t } = useTranslation("home");
 
+    const autoplay = useRef(
+        Autoplay({
+            delay: 4000,
+            stopOnInteraction: false,
+        })
+    );
+
     return (
         <section className='h-[calc(100vh-80px)] w-full mb-8'>
             <Carousel opts={{align: "start", loop: true, direction: i18n.dir()}}
-                plugins={[ Autoplay({ delay: 4000, }), ]}
+                plugins={[autoplay.current]}
                 className="w-full h-full">
                 <CarouselContent className='h-[calc(100vh-80px)]'>
                     <CarouselItem className='h-full'>
