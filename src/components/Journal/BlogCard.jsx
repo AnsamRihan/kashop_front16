@@ -18,7 +18,7 @@ export default function BlogCard({ blog }) {
                 transition-transform duration-500 ease-out
                 group-hover:scale-105"/>
 
-            <div className="w-full stack items-start gap-3 px-6 pb-6">
+            <div className="w-full stack items-start gap-3 px-6">
                 <div className="w-full row justify-between text-xs xs:text-sm tracking-[0.14px] font-medium" >
                     <span className="capitalize px-2.5 py-0.5 border border-secondary
                         circle text-secondary bg-secondary/10">
