@@ -28,20 +28,20 @@ export default function Navbar() {
         <div className='container'>
           <div className='w-full h-full row gap-5 justify-between'>
             {/*Left side */}
-            <div className='row gap-1.5 md:gap-8'>
+            <div className='row gap-1.5 lg:gap-8'>
               {/* Logo */}
-              <div className='center h-full order-2 md:order-1'>
+              <div className='center h-full order-2 lg:order-1'>
                 <Link to="/" className='text-primary text-xl xxs:text-2xl xs:text-[28px] sm:text-[30px] font-bold tracking-[-0.32px]'>
                   Kashop
                 </Link>
               </div>
 
               {/*navlinks +/ sidebar */}
-              <div className='order-1 md:order-2'>
-                <div className='md:hidden'>
+              <div className='order-1 lg:order-2'>
+                <div className='lg:hidden'>
                   <SideBar />
                 </div>
-                <div className='hidden md:block'>
+                <div className='hidden lg:block'>
                   <Navlink />
                 </div>
               </div>
@@ -61,7 +61,7 @@ export default function Navbar() {
               ) : null}
 
               {/*Profile */}
-              <div className='hidden md:block'>
+              <div className='hidden lg:block'>
                 <UserMenu />
               </div>
             </div>

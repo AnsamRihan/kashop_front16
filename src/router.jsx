@@ -16,6 +16,10 @@ import OrderSuccess from "./pages/OrderSuccess/OrderSuccess.jsx";
 import ProfileLayout from "./layouts/ProfileLayout.jsx";
 import ProfileInfo from "./pages/Profile/ProfileInfo.jsx";
 import OrdersInfo from "./pages/Profile/OrdersInfo.jsx";
+import Blog from "./pages/blog/Blog.jsx";
+import About from "./pages/aboutUs/About.jsx";
+import FAQs from "./pages/FAQs/FAQs.jsx";
+import Contact from "./pages/contactUs/Contact.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +36,22 @@ const router = createBrowserRouter([
         {
             path: "/product/:id",
             element: <Product />,
+        },
+        {
+            path: "/blog",
+            element: <Blog />,
+        },
+        {
+            path: "/about",
+            element: <About />,
+        },
+        {
+            path: "/FAQs",
+            element: <FAQs />,
+        },
+        {
+            path: "/contact",
+            element: <Contact />,
         },
         {
             path: "/cart",
