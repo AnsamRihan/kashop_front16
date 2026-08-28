@@ -14,6 +14,44 @@
         "title": "Browse Categories",
         "allProducts": "All Products"
     },
+    "categoryPromotions": {
+        "mobile": {
+            "label": "Mobile Deals",
+            "title": "Meet Your Next Phone",
+            "description": "Discover the latest mobile models with the features, style, and performance you need for everyday life.",
+            "button": "Shop Mobiles"
+        },
+        "clothes": {
+            "label": "Style Edit",
+            "title": "Find Your Next Favorite",
+            "description": "Explore new styles, everyday essentials, and easy-to-love pieces for every look and everyday occasion.",
+            "button": "Shop Clothes"
+        },
+        "electronics": {
+            "label": "New In",
+            "title": "Tech for Every Day",
+            "description": "Discover the latest electronics for work, entertainment, communication, and everything you do every day.",
+            "button": "Shop Electronics"
+        },
+        "shoes": {
+            "label": "New Season",
+            "title": "Made for Every Step",
+            "description": "Explore shoes that combine everyday comfort with great style, from casual days to your next outing.",
+            "button": "Shop Shoes"
+        },
+        "homeAppliances": {
+            "label": "Home Essentials",
+            "title": "Bring More Ease Home",
+            "description": "Discover practical appliances that make cooking, cleaning, and everyday tasks easier and more convenient.",
+            "button": "Shop Appliances"
+        },
+        "beauty": {
+            "label": "Beauty Picks",
+            "title": "Go Ahead, Treat Yourself",
+            "description": "Discover makeup, skincare, haircare, and everyday beauty favorites to refresh your routine and try something new.",
+            "button": "Shop Beauty"
+        }
+    },
     "products": {
         "title": "Featured Products"
     },
