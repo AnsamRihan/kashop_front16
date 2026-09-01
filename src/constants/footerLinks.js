@@ -13,6 +13,6 @@ export const footerLinks = [
     },
     {
       key: "contactUs",
-      path: "#",
+      path: "/contact",
     }
   ]
