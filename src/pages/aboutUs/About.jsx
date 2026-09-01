@@ -69,6 +69,32 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/*Statistics */}
+      <section className='mb-12 py-12 xs:py-16 bg-secondary-background text-center'>
+        <div className="container">
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 xs:gap-6 md:gap-8'>
+            {[
+              { value: "50K+", key: "happyCustomers" },
+              { value: "1,000+", key: "products" },
+              { value: "4.8/5", key: "averageRating" },
+              { value: "24/7", key: "customerSupport" },
+            ].map((stat) => (
+              <div
+                key={stat.key}
+                className='p-4 xs:p-6 md:p-8 bg-background rounded-[16px] center stack gap-1.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md'>
+                <h3 className='text-primary font-semibold text-2xl xs:text-3xl'>
+                  {stat.value}
+                </h3>
+                <p className='font-medium tracking-[0.14px] text-xs xs:text-sm md:text-base'>
+                  {t(`statistics.${stat.key}`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   )
 }
+

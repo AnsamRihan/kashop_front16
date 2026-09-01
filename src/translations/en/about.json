@@ -9,5 +9,11 @@
         "description": "Kashop was created with one simple idea: shopping online should feel effortless. From everyday essentials to things that make life a little better, we bring carefully selected products together in one place.",
         "link": "Our Story",
         "imageAlt": "Kashop store"
+    },
+    "statistics": {
+        "happyCustomers": "Happy Customers",
+        "products": "Products",
+        "averageRating": "Average Rating",
+        "customerSupport": "Customer Support"
     }
 }
