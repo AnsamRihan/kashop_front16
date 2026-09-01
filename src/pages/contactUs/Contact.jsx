@@ -2,7 +2,7 @@ import { BubbleBackground } from '@/components/animate-ui/backgrounds/bubble';
 import { Button } from '@/components/ui/button';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
-import { Mail, MapPin, MessageSquareText, Phone } from 'lucide-react';
+import { CircleQuestionMark, Mail, MapPin, MessageSquareText, Phone } from 'lucide-react';
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from '@/components/ui/textarea';
 import contact from "@/assets/images/contact/contact.jpg";
+import { Link } from 'react-router-dom';
 
 export const contactOptions = [
   {
@@ -246,6 +247,33 @@ export default function Contact() {
 
               <img src={contact} alt={t("imageAlt")} className='w-full h-80 object-cover object-bottom rounded-[16px]' />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/*FAQ section */}
+      <section className='py-16'>
+        <div className="container">
+          <div className='w-full stack items-center justify-center gap-5 text-center'>
+            <div className='w-12 h-12 circle bg-primary/10 center'>
+              <CircleQuestionMark className='text-primary size-7.5' />
+            </div>
+
+            <div className='stack items-center gap-2'>
+              <h2 className='text-heading-foreground font-semibold tracking-[-0.32px] text-xl xxs:text-2xl xs:text-3xl'>
+                {t("faq.title")}
+              </h2>
+
+              <p className='max-w-xl'>
+                {t("faq.description")}
+              </p>
+            </div>
+
+            <Link to='/FAQs'>
+              <Button variant='gradiant'>
+                {t("faq.button")}
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

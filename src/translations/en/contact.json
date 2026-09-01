@@ -61,5 +61,10 @@
     "phone": "Phone",
     "phoneNumber": "+970 XXX XXX XXX"
   },
-  "imageAlt": "Contact us"
+  "imageAlt": "Contact us",
+  "faq": {
+    "title": "Looking for a quick answer?",
+    "description": "You might find what you're looking for in our FAQ.",
+    "button": "Visit FAQ"
+  }
 }
