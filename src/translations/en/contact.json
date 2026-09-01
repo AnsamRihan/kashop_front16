@@ -2,5 +2,23 @@
   "header": {
     "title": "Let’s connect!",
     "description": "Have a question about an order, a product, or anything else? Send us a message and we’ll get back to you with the help you need."
+  },
+  "howCanWeHelp": "How can we help?",
+  "contactOptions": {
+    "chat": {
+      "title": "Chat with us",
+      "description": "Get quick answers from our support team.",
+      "button": "Start Chat"
+    },
+    "email": {
+      "title": "Email us",
+      "description": "We usually reply within 24 hours.",
+      "button": "Send Email"
+    },
+    "call": {
+      "title": "Call us",
+      "description": "Mon–Fri, 9 AM–6 PM",
+      "button": "Call Now"
+    }
   }
 }
