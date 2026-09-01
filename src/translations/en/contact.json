@@ -1,7 +1,7 @@
 {
   "header": {
-    "title": "Let’s connect!",
-    "description": "Have a question about an order, a product, or anything else? Send us a message and we’ll get back to you with the help you need."
+    "title": "Let’s connect.",
+    "description": "Have a question or need a little help? We’re here to make things simple and get you where you need to go."
   },
   "howCanWeHelp": "How can we help?",
   "contactOptions": {
@@ -20,5 +20,46 @@
       "description": "Mon–Fri, 9 AM–6 PM",
       "button": "Call Now"
     }
-  }
+  },
+  "form": {
+    "title": "Send us a message",
+    "description": "Fill out the form and our team will get back to you as soon as possible.",
+    "fullName": {
+      "label": "Full Name",
+      "placeholder": "Jane Doe"
+    },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "jane@example.com"
+    },
+    "subject": {
+      "label": "Subject",
+      "placeholder": "Select a subject",
+      "options": {
+        "generalInquiry": "General Inquiry",
+        "orderSupport": "Order Support",
+        "productQuestion": "Product Question",
+        "feedback": "Feedback"
+      }
+    },
+    "orderNumber": {
+      "label": "Order Number",
+      "placeholder": "#12345"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Type your message here."
+    },
+    "sendButton": "Send Message"
+  },
+  "contactInfo": {
+    "title": "We're here for you.",
+    "description": "Whether you're looking for help with an order or just need some shopping advice, don't hesitate to reach out. Our team of experts is dedicated to providing you with the best premium shopping experience.",
+    "visitUs": "Visit Us",
+    "location": "Ramallah, Palestine",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneNumber": "+970 XXX XXX XXX"
+  },
+  "imageAlt": "Contact us"
 }
