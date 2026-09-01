@@ -4,38 +4,83 @@ import { Field } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { faqItems } from "@/constants/faqItems";
 
 export default function FAQs() {
 
-  const { t } = useTranslation("FAQs")
+  const { t, i18n } = useTranslation("FAQs");
+
+  const items = faqItems.map((item) => ({
+    value: item.value,
+    trigger: t(`questions.${item.value}.trigger`),
+    content: t(`questions.${item.value}.content`),
+  }));
+
   return (
     <>
+      {/*Header */}
       <section className="pb-8 text-center">
         <BubbleBackground interactive>
-          <div className="relative z-10 w-full center">
-            <div className="stack gap-5.5 px-4 py-16">
-              <h1 className="onBubbleBgHero">
-                {t("header.title")}
-              </h1>
+          <div className="container">
+            <div className="relative z-10 w-full center">
+              <div className="stack gap-5.5 py-16">
+                <h1 className="onBubbleBgHero">
+                  {t("header.title")}
+                </h1>
 
-              <p className='onBubbleBgP'>
-                {t("header.description")}
-              </p>
+                <p className='onBubbleBgP'>
+                  {t("header.description")}
+                </p>
 
-              <Field className='center xs:pt-3'>
-                <div className="xs:h-13 w-full max-w-140 stack xs:row gap-3 xs:gap-1 rounded-[16px] xs:rounded-full bg-secondary-background p-2.5">
-                  <Input id="input-button-group" placeholder={t("header.searchPlaceholder")}
-                    className="h-full flex-1 border-0 bg-transparent! px-3 xs:text-base text-foreground
+                <Field className='center xs:pt-3'>
+                  <div className="xs:h-13 w-full max-w-140 stack xs:row gap-3 xs:gap-1 rounded-[16px] xs:rounded-full bg-secondary-background p-2.5">
+                    <Input id="input-button-group" placeholder={t("header.searchPlaceholder")}
+                      className="h-full flex-1 border-0 bg-transparent! px-3 xs:text-base text-foreground
                     placeholder:text-foreground/70 shadow-none focus-visible:ring-0"/>
 
-                  <Button variant='gradiant' type="submit" className="w-full xs:w-fit h-full xs:rounded-full border-0">
-                    {t("header.searchButton")}
-                  </Button>
-                </div>
-              </Field>
+                    <Button variant='gradiant' type="submit" className="w-full xs:w-fit h-full xs:rounded-full border-0">
+                      {t("header.searchButton")}
+                    </Button>
+                  </div>
+                </Field>
+              </div>
             </div>
           </div>
         </BubbleBackground>
+      </section>
+
+      {/*FAQs */}
+      <section className='pb-8 sm:pt-4 sm:pb-12'>
+        <div className="container">
+          <div className="center stack gap-8">
+            <h2 className='text-heading-foreground font-semibold tracking-[-0.36px] text-2xl xxs:text-3xl xs:text-4xl
+            text-center'>
+              {t("mostAskedQuestions")}
+            </h2>
+
+            {/*most asked questions */}
+            <Accordion multiple className="max-w-2xl stack gap-4" dir={i18n.dir()}>
+              {items.map((item) => (
+                <AccordionItem key={item.value} value={item.value} className='w-full rounded-[16px] bg-tertiary-background
+                transition-all duration-200 ease-in-out hover:shadow-md border border-background-border'>
+                  <AccordionTrigger className='w-full p-6 hover:no-underline cursor-pointer text-heading-foreground
+                  text-sm xxs:text-base xs:text-lg'>
+                    {item.trigger}
+                  </AccordionTrigger>
+                  <AccordionContent className='p-6 pt-0 text-foreground'>
+                    {item.content}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
       </section>
     </>
   );
