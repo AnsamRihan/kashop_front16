@@ -1,7 +1,34 @@
 import React from 'react'
+import hero from "@/assets/images/aboutUs/aboutusBg.jpg";
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
-    <div>AboutUs</div>
+    <>
+      {/*hero */}
+      <section className='pb-8'>
+        <div className='bg-cover bg-center bg-no-repeat'
+          style={{ backgroundImage: `url(${hero})` }}>
+          <div className='container center text-center'>
+            <div className='max-w-2xl stack items-center gap-5 py-30'>
+
+              <h1 className='text-hero-heading-foreground font-semibold tracking-[-0.32px] text-3xl xxs:text-4xl xs:text-5xl'>
+                Built around better shopping.
+              </h1>
+              <p className='text-hero-foreground text-base xs:text-lg'>
+                Kashop brings quality products, thoughtful curation, and a simple shopping experience together in one place.
+              </p>
+
+              <Link to='/shop'>
+                <Button variant='gradiant'>
+                  Discover Kashop
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   )
 }
