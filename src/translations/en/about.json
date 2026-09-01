@@ -56,5 +56,28 @@
                 "description": "Our support team is always ready to help you out."
             }
         }
+    },
+    "reviews": {
+        "title": "What our customers say.",
+        "verifiedBuyer": "Verified Buyer",
+        "goToReview": "Go to review {{number}}",
+        "items": {
+            "elena": {
+                "name": "Elena R.",
+                "text": "Kashop has completely transformed how I shop for my home and wardrobe. The quality is unmatched, and every piece feels curated specifically for my lifestyle. Truly a premium experience."
+            },
+            "marcus": {
+                "name": "Marcus T.",
+                "text": "Everything about shopping with Kashop feels thoughtful. From the product selection to the delivery, the entire experience is smooth, simple, and reliable."
+            },
+            "sophia": {
+                "name": "Sophia M.",
+                "text": "I love how easy it is to find products that actually feel special. Kashop has quickly become one of my favorite places to shop."
+            },
+            "daniel": {
+                "name": "Daniel K.",
+                "text": "The quality, service, and attention to detail really stand out. Every order has felt effortless from start to finish."
+            }
+        }
     }
 }

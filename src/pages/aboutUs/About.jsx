@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import hero from "@/assets/images/aboutUs/aboutusBg.jpg";
 import aboutStore from "@/assets/images/aboutUs/aboutStore.jpg";
@@ -7,11 +7,50 @@ import customerAlways from "@/assets/images/aboutUs/customerAlways.jpg";
 import alwaysEvolving from "@/assets/images/aboutUs/alwaysEvolving.jpg";
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Truck, Lock, SquareArrowLeft, Headset } from 'lucide-react';
+import { ArrowRight, Truck, Lock, SquareArrowLeft, Headset, Quote } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
+const reviews = [
+  {
+    key: "elena",
+  },
+  {
+    key: "marcus",
+  },
+  {
+    key: "sophia",
+  },
+  {
+    key: "daniel",
+  },
+];
 
 export default function About() {
-  const { t } = useTranslation("about");
+  const { t, i18n } = useTranslation("about");
+
+  const [carouselApi, setCarouselApi] = useState();
+  const [activeReview, setActiveReview] = useState(0);
+
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const updateIndex = () => {
+      setActiveReview(carouselApi.selectedScrollSnap());
+    };
+
+    updateIndex();
+    carouselApi.on("select", updateIndex);
+
+    return () => {
+      carouselApi.off("select", updateIndex);
+    };
+  }, [carouselApi]);
 
   return (
     <>
@@ -196,7 +235,66 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/*Customer Reviews */}
+      <section className='py-12'>
+        <div className="container">
+          <div className='stack items-center gap-10'>
+            <h2 className='text-heading-foreground font-semibold tracking-[-0.32px] text-2xl xxs:text-3xl xs:text-4xl text-center'>
+              {t("reviews.title")}
+            </h2>
+
+            <Carousel
+              key={i18n.language}
+              opts={{
+                loop: true,
+                align: "start",
+                direction: i18n.dir(),
+              }}
+              setApi={setCarouselApi}
+              className='w-full max-w-4xl px-10 xs:px-12'>
+
+              <CarouselContent>
+                {reviews.map((review) => (
+                  <CarouselItem key={review.key}>
+                    <div className='min-h-65 xs:min-h-70 center stack items-center justify-center gap-6 text-center px-2 xs:px-8'>
+                      <Quote className='size-10 xs:size-12 text-secondary fill-secondary/10' />
+
+                      <p className='max-w-2xl text-base xs:text-lg md:text-xl leading-relaxed text-heading-foreground'>
+                        {t(`reviews.items.${review.key}.text`)}
+                      </p>
+
+                      <div className='stack items-center gap-1.5'>
+                        <h3 className='font-semibold text-base xs:text-lg'>
+                          {t(`reviews.items.${review.key}.name`)}
+                        </h3>
+
+                        <p className='text-secondary text-xs xs:text-sm font-semibold tracking-[0.14px] uppercase'>
+                          {t("reviews.verifiedBuyer")}
+                        </p>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+
+            <div className='row center gap-2'>
+              {reviews.map((review, index) => (
+                <button key={review.key} type='button' aria-label={t("reviews.goToReview", { number: index + 1 })}
+                  onClick={() => carouselApi?.scrollTo(index)}
+                  className={`size-2.5 rounded-full transition-all duration-300 ${activeReview === index
+                    ? 'bg-secondary scale-110'
+                    : 'bg-secondary/30 hover:bg-secondary/60'
+                    }`} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
-
