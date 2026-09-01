@@ -35,5 +35,26 @@
                 "imageAlt": "Modern lifestyle products"
             }
         }
+    },
+    "shoppingSimple": {
+        "title": "Shopping should be simple.",
+        "items": {
+            "fastDelivery": {
+                "title": "Fast Delivery",
+                "description": "Quick and reliable shipping right to your doorstep."
+            },
+            "secureShopping": {
+                "title": "Secure Shopping",
+                "description": "Your data is protected with state-of-the-art encryption."
+            },
+            "easyReturns": {
+                "title": "Easy Returns",
+                "description": "Not completely satisfied? Send it back hassle-free."
+            },
+            "hereWhenYouNeedUs": {
+                "title": "Here When You Need Us",
+                "description": "Our support team is always ready to help you out."
+            }
+        }
     }
 }

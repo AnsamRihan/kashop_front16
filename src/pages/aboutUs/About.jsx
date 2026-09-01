@@ -7,7 +7,8 @@ import customerAlways from "@/assets/images/aboutUs/customerAlways.jpg";
 import alwaysEvolving from "@/assets/images/aboutUs/alwaysEvolving.jpg";
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Truck, Lock, SquareArrowLeft, Headset } from 'lucide-react';
+
 
 export default function About() {
   const { t } = useTranslation("about");
@@ -124,7 +125,7 @@ export default function About() {
                 <div key={belief.key} className='group stack items-center gap-5 text-center'>
                   <div className='w-full overflow-hidden rounded-[16px]'>
                     <img src={belief.image} alt={t(`beliefs.items.${belief.key}.imageAlt`)}
-                      className='h-64 xs:h-72 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105'/>
+                      className='h-64 xs:h-72 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105' />
                   </div>
 
                   <div className='stack items-center gap-3'>
@@ -138,6 +139,59 @@ export default function About() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/*Shopping should be simple */}
+      <section className='py-12 xs:pb-16 bg-secondary-background'>
+        <div className="container">
+          <div className='stack items-center gap-10'>
+            <h2 className='text-heading-foreground font-semibold tracking-[-0.32px] text-2xl xxs:text-3xl xs:text-4xl text-center'>
+              {t("shoppingSimple.title")}
+            </h2>
+
+            <div className='w-full grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6'>
+              {[
+                {
+                  icon: Truck,
+                  key: "fastDelivery",
+                },
+                {
+                  icon: Lock,
+                  key: "secureShopping",
+                },
+                {
+                  icon: SquareArrowLeft,
+                  key: "easyReturns",
+                },
+                {
+                  icon: Headset,
+                  key: "hereWhenYouNeedUs",
+                },
+              ].map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div key={item.key} className='p-6 bg-transparent center stack gap-4 text-center transition-transform 
+                  duration-300 hover:-translate-y-1'>
+                    <div className='circle bg-secondary/10 p-[17px]'>
+                      <Icon className='size-6 text-secondary' />
+                    </div>
+
+                    <div className='stack items-center gap-2'>
+                      <h3 className='text-heading-foreground font-semibold text-lg xs:text-xl'>
+                        {t(`shoppingSimple.items.${item.key}.title`)}
+                      </h3>
+
+                      <p className='max-w-55 text-sm xs:text-base'>
+                        {t(`shoppingSimple.items.${item.key}.description`)}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
