@@ -1,6 +1,12 @@
 {
     "readMore": "Read More",
     "header": {
+        "title": "The Journal",
+        "description": "A curated exploration of lifestyle, design, and commerce. Discover stories that elevate the everyday and celebrate the art of mindful living.",
+        "searchPlaceholder": "Search blogs...",
+        "searchButton": "Search"
+    },
+    "headerBlog": {
         "category": "Lifestyle",
         "title": "The Art of Curated Living: Designing Your Sanctuary",
         "description": "Explore the philosophy of creating a home that reflects your inner self. We delve into the nuances of texture, light, and mindful curation to build a space…",

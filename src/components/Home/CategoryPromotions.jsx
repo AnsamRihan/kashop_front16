@@ -26,7 +26,7 @@ export default function CategoryPromotions() {
 
         const category = categories.find(
             (category) =>
-                category.name.toLowerCase() === categoryName.toLowerCase()
+                category.name?.toLowerCase() === categoryName.toLowerCase()
         );
 
         return category
