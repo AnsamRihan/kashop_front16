@@ -227,6 +227,16 @@
     @apply text-sm xs:text-base md:text-lg;
 }
 
+@utility blogFilter {
+  @apply cursor-pointer capitalize font-medium text-xs xs:text-sm tracking-[0.14px] px-5 py-2 rounded-full bg-secondary-background
+  border text-foreground border-background-border transition-all duration-100 ease-in-out;
+
+  &:hover,
+  &.active {
+    @apply text-white bg-primary;
+  }
+}
+
 @utility loader {
     --loader-color: var(--color-primary);
     --loader-size: 1px;

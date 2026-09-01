@@ -12,6 +12,12 @@
         "description": "Explore the philosophy of creating a home that reflects your inner self. We delve into the nuances of texture, light, and mindful curation to build a space…",
         "button": "Read Article"
     },
+    "filters": {
+        "all": "All",
+        "insights": "Insights",
+        "productUpdates": "Product Updates",
+        "successStories": "Success Stories"
+    },
     "blog1": {
         "category": "Fashion",
         "date": "Oct 24, 2023",

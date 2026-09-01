@@ -5,7 +5,9 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import blog_header from "@/assets/images/journal/blog-header.jpg";
 import { ArrowRight } from 'lucide-react'
-
+import { blogs } from "@/constants/blogs";
+import BlogCard from '@/components/Journal/BlogCard'
+import AppPagination from '@/components/Pagination/Pagination'
 
 export default function Blog() {
   const { t } = useTranslation("blogs")
@@ -33,32 +35,64 @@ export default function Blog() {
             </div>
           </Field>
 
-          <div className='mt-10 overflow-hidden bg-tertiary-background rounded-[16px] 
-          grid grid-cols-1 md:grid-cols-[2fr_1fr] w-full'>
-            <img src={blog_header} alt={t("headerBlog.title")} className="w-full aspect-[4/3] md:h-[443px] object-cover object-bottom"/>     
+          <div className='group mt-10 overflow-hidden bg-tertiary-background rounded-[16px] cursor-pointer
+            transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg grid grid-cols-1 md:grid-cols-[2fr_1fr] w-full'>
+            <img src={blog_header} alt={t("headerBlog.title")} className="w-full aspect-[4/3] md:h-[443px] object-cover 
+            object-center" />
 
             <div className="p-6 lg:p-12 text-start w-full h-full stack items-start justify-center gap-3">
-                <div className="w-full row justify-between text-xs xs:text-sm tracking-[0.14px] font-medium" >
-                    <span className="capitalize px-2.5 py-0.5 border border-secondary
+              <div className="w-full row justify-between text-xs xs:text-sm tracking-[0.14px] font-medium" >
+                <span className="capitalize px-2.5 py-0.5 border border-secondary
                         circle text-secondary bg-secondary/10">
-                        {t("headerBlog.category")}
-                    </span>
-                </div>
-
-                <h3 className="text-base xs:text-lg font-semibold text-heading-foreground">
-                    {t("headerBlog.title")}
-                </h3>
-
-                <p className="text-sm xs:text-base">
-                    {t("headerBlog.description")}
-                </p>
-
-                <span className="row justify-center gap-1 text-primary
-                    hover:text-secondary transition-all duration-150 ease-in-out">
-                    {t("readMore")}
-                    <ArrowRight className="size-3 mt-0.5 rtl:rotate-180" />
+                  {t("headerBlog.category")}
                 </span>
+              </div>
+
+              <h3 className="text-base xs:text-lg font-semibold text-heading-foreground">
+                {t("headerBlog.title")}
+              </h3>
+
+              <p className="text-sm xs:text-base">
+                {t("headerBlog.description")}
+              </p>
+
+              <span className="row justify-center gap-1 text-primary
+                    hover:text-secondary transition-all duration-150 ease-in-out">
+                {t("readMore")}
+                <ArrowRight className="size-3 mt-0.5 rtl:rotate-180" />
+              </span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/*Blogs section */}
+      <section className='pb-8'>
+        <div className="container">
+          <div className='w-full stack items-start gap-8'>
+
+            {/*Filters */}
+            <div className="w-full overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden">
+              <div className="flex w-max gap-3">
+                <button className='blogFilter active'>{t("filters.all")}</button>
+                <button className='blogFilter'>{t("filters.insights")}</button>
+                <button className='blogFilter'>{t("filters.productUpdates")}</button>
+                <button className='blogFilter'>{t("filters.successStories")}</button>
+              </div>
+            </div>
+
+            {/*Blogs */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+              {blogs.map((blog) => (
+                <BlogCard key={blog.translationKey} blog={blog} />
+              ))}
+            </div>
+
+            <AppPagination
+              page={1}
+              totalPages={1}
+              onPageChange={() => { }}
+            />
           </div>
         </div>
       </section>
