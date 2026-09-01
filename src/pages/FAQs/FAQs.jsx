@@ -11,7 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { faqItems } from "@/constants/faqItems";
-import { ArrowRight, CircleQuestionMark } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function FAQs() {
