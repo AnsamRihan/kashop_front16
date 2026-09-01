@@ -237,7 +237,7 @@ export default function About() {
       </section>
 
       {/*Customer Reviews */}
-      <section className='py-12'>
+      <section className='py-12 xs:pb-16'>
         <div className="container">
           <div className='stack items-center gap-10'>
             <h2 className='text-heading-foreground font-semibold tracking-[-0.32px] text-2xl xxs:text-3xl xs:text-4xl text-center'>
@@ -278,8 +278,8 @@ export default function About() {
                 ))}
               </CarouselContent>
 
-              <CarouselPrevious />
-              <CarouselNext />
+              <CarouselPrevious className='inset-s-2 lg:-inset-s-12' /> 
+              <CarouselNext className='inset-e-2 lg:-inset-e-12' />
             </Carousel>
 
             <div className='row center gap-2'>
