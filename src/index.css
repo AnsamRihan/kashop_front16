@@ -44,6 +44,7 @@
     --color-hero-heading-foreground: var(--hero-heading-foreground);
     --color-hero-foreground: var(--hero-foreground);
     --color-hero-primary: var(--hero-primary);
+    --color-on-bubble-background: #F3E8F1;
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
@@ -236,6 +237,15 @@
     @apply text-white bg-primary;
   }
 }
+
+@utility onBubbleBgHero {
+    @apply text-4xl xs:text-5xl md:text-6xl font-bold text-on-bubble-background tracking-[-1.6px];
+}
+
+@utility onBubbleBgP {
+    @apply max-w-[576px] text-on-bubble-background font-medium text-sm xs:text-base md:text-lg;
+}
+
 
 @utility loader {
     --loader-color: var(--color-primary);

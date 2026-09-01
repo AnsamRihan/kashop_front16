@@ -74,6 +74,9 @@ import arNavbar from "./translations/ar/navbar.json";
 import enBlogs from "./translations/en/blogs.json";
 import arBlogs from "./translations/ar/blogs.json";
 
+import enFAQs from "./translations/en/FAQs.json";
+import arFAQs from "./translations/ar/FAQs.json";
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -104,6 +107,7 @@ i18n
                 validation: enValidation,
                 navbar: enNavbar,
                 blogs: enBlogs,
+                FAQs: enFAQs,
             },
             ar: {
                 login: arLogin,
@@ -130,6 +134,7 @@ i18n
                 validation: arValidation,
                 navbar: arNavbar,
                 blogs: arBlogs,
+                FAQs: arFAQs,
             },
         },
 
