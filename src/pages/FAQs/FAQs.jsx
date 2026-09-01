@@ -11,6 +11,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { faqItems } from "@/constants/faqItems";
+import { ArrowRight, CircleQuestionMark } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function FAQs() {
 
@@ -79,6 +81,35 @@ export default function FAQs() {
                 </AccordionItem>
               ))}
             </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/*Contact us */}
+      <section className='pb-8 text-center'>
+        <div className="container">
+          <div className='relative overflow-hidden rounded-[24px] bg-linear-to-br from-primary/10 via-secondary/5 to-primary/10
+          border border-secondary/20 p-10 md:p-16 center stack gap-4'>
+
+            <div className='absolute -top-24 -inset-e-24 size-64 rounded-full border-40 border-primary/10 pointer-events-none' />
+            <div className='absolute -bottom-32 -inset-s-32 size-80 rounded-full border-50 border-secondary/10 pointer-events-none' />
+
+            <div className='relative z-10 center stack gap-4'>
+              <h2 className='text-heading-foreground font-bold text-xl xxs:text-2xl xs:text-3xl'>
+                {t("contact.title")}
+              </h2>
+
+              <p className='max-w-lg pb-4 text-sm xs:text-base'>
+                {t("contact.description")}
+              </p>
+
+              <Link to='/contact'>
+                <Button variant='gradiant' className='row text-sm xs:text-base'>
+                  {t("contact.button")}
+                  <ArrowRight className='rtl:rotate-180' />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
