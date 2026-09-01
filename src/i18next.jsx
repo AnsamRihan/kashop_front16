@@ -80,6 +80,9 @@ import arFAQs from "./translations/ar/FAQs.json";
 import enContact from "./translations/en/contact.json";
 import arContact from "./translations/ar/contact.json";
 
+import enAbout from "./translations/en/about.json";
+import arAbout from "./translations/ar/about.json";
+
 i18n
     .use(detector)
     .use(initReactI18next)
@@ -112,6 +115,7 @@ i18n
                 blogs: enBlogs,
                 FAQs: enFAQs,
                 contact: enContact,
+                about: enAbout,
             },
             ar: {
                 login: arLogin,
@@ -140,6 +144,7 @@ i18n
                 blogs: arBlogs,
                 FAQs: arFAQs,
                 contact: arContact,
+                about: arAbout,
             },
         },
 
