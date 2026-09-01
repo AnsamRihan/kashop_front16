@@ -15,5 +15,25 @@
         "products": "Products",
         "averageRating": "Average Rating",
         "customerSupport": "Customer Support"
+    },
+    "beliefs": {
+        "title": "What we believe in",
+        "items": {
+            "qualityFirst": {
+                "title": "Quality first",
+                "description": "We partner with artisans and creators who share our obsession with detail and durability.",
+                "imageAlt": "Quality craftsmanship"
+            },
+            "customersAlways": {
+                "title": "Customers always",
+                "description": "Your experience is our priority. We design every interaction to be seamless and delightful.",
+                "imageAlt": "Happy customer shopping"
+            },
+            "alwaysEvolving": {
+                "title": "Always evolving",
+                "description": "We constantly refine our curation and services to bring you the best of modern living.",
+                "imageAlt": "Modern lifestyle products"
+            }
+        }
     }
 }

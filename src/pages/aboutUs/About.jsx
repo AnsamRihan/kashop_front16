@@ -2,6 +2,9 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import hero from "@/assets/images/aboutUs/aboutusBg.jpg";
 import aboutStore from "@/assets/images/aboutUs/aboutStore.jpg";
+import qualityFirst from "@/assets/images/aboutUs/qualityFirst.jpg";
+import customerAlways from "@/assets/images/aboutUs/customerAlways.jpg";
+import alwaysEvolving from "@/assets/images/aboutUs/alwaysEvolving.jpg";
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -12,7 +15,7 @@ export default function About() {
   return (
     <>
       {/*hero */}
-      <section className='pb-12'>
+      <section className='pb-12 xs:pb-16'>
         <div className='bg-cover bg-center bg-no-repeat'
           style={{ backgroundImage: `url(${hero})` }}>
           <div className='container center text-center'>
@@ -36,7 +39,7 @@ export default function About() {
       </section>
 
       {/*More than just a store section */}
-      <section className='pb-12'>
+      <section className='pb-12 xs:pb-16'>
         <div className="container">
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-12'>
             <div className='overflow-hidden rounded-[16px]'>
@@ -71,7 +74,7 @@ export default function About() {
       </section>
 
       {/*Statistics */}
-      <section className='mb-12 py-12 xs:py-16 bg-secondary-background text-center'>
+      <section className='py-12 xs:py-16 bg-secondary-background text-center'>
         <div className="container">
           <div className='grid grid-cols-2 md:grid-cols-4 gap-4 xs:gap-6 md:gap-8'>
             {[
@@ -91,6 +94,51 @@ export default function About() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/*Our Beliefs */}
+      <section className='py-12 bg-background'>
+        <div className="container">
+          <div className='stack items-center gap-10'>
+            <h2 className='text-heading-foreground font-semibold tracking-[-0.32px] text-2xl xxs:text-3xl xs:text-4xl text-center'>
+              {t("beliefs.title")}
+            </h2>
+
+            <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8'>
+              {[
+                {
+                  image: qualityFirst,
+                  key: "qualityFirst",
+                },
+                {
+                  image: customerAlways,
+                  key: "customersAlways",
+                },
+                {
+                  image: alwaysEvolving,
+                  key: "alwaysEvolving",
+                },
+              ].map((belief) => (
+                <div key={belief.key} className='group stack items-center gap-5 text-center'>
+                  <div className='w-full overflow-hidden rounded-[16px]'>
+                    <img src={belief.image} alt={t(`beliefs.items.${belief.key}.imageAlt`)}
+                      className='h-64 xs:h-72 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105'/>
+                  </div>
+
+                  <div className='stack items-center gap-3'>
+                    <h3 className='text-heading-foreground font-semibold text-lg xs:text-xl'>
+                      {t(`beliefs.items.${belief.key}.title`)}
+                    </h3>
+
+                    <p className='max-w-sm text-sm xs:text-base'>
+                      {t(`beliefs.items.${belief.key}.description`)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
