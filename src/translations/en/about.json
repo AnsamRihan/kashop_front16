@@ -1,7 +1,13 @@
 {
-  "hero": {
-    "title": "Built around better shopping.",
-    "description": "Kashop brings quality products, thoughtful curation, and a simple shopping experience together in one place.",
-    "button": "Discover Kashop"
-  }
+    "hero": {
+        "title": "Built around better shopping.",
+        "description": "Kashop brings quality products, thoughtful curation, and a simple shopping experience together in one place.",
+        "button": "Discover Kashop"
+    },
+    "moreThanStore": {
+        "title": "More than just a store.",
+        "description": "Kashop was created with one simple idea: shopping online should feel effortless. From everyday essentials to things that make life a little better, we bring carefully selected products together in one place.",
+        "link": "Our Story",
+        "imageAlt": "Kashop store"
+    }
 }
