@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { useTranslation } from 'react-i18next';
 import { Banknote, CreditCard } from 'lucide-react';
@@ -22,7 +22,20 @@ export default function Checkout() {
     const { mutate: checkout, isPending: isCheckingOut } = useCheckout();
     const navigate = useNavigate();
 
+    const isCartEmpty = !data?.items?.length;
+
+    useEffect(() => {
+        if (!isLoading && !isError && isCartEmpty) {
+            navigate("/cart");
+        }
+    }, [isLoading, isError, isCartEmpty, navigate]);
+
     const handleCheckout = () => {
+        if (isCartEmpty) {
+            toast.error(t("emptyCart"));
+            return;
+        }
+
         checkout(
             { PaymentMethod: paymentMethod },
             {
@@ -158,7 +171,7 @@ export default function Checkout() {
                                 </div>
 
                                 <Button className="w-full" onClick={handleCheckout}
-                                    disabled={isCheckingOut}>
+                                    disabled={isCheckingOut || isCartEmpty}>
                                     {isCheckingOut ? t("processing") : t("placeOrder")}
                                 </Button>
                             </div>
